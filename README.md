@@ -13,7 +13,7 @@ Course Related Links
 
 | Week         | Lectures                                                                  | Assignments                                          |
 | ------------ | ------------------------------------------------------------------------- | ---------------------------------------------------- |
-| 2019/7/1~7/7 | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors) | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
+| 2019/7/1~7/7 | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses) | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
 
 ### Lectures
 
@@ -26,6 +26,19 @@ Course Related Links
   * [ ] [Efficient Estimation of Word Representations in Vector Space (original word2vec paper)](CourseMaterials/readings/word2vec.pdf)
   * [ ] [Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)](CourseMaterials/readings/NegativeSampling.pdf)
 * [Gensim example](CourseMaterials/GensimWordVectorVisualization.ipynb)
+
+#### Lecture 2: Word Vectors 2 and Word Senses
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture02-wordvecs2.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes02-wordvecs2.pdf)
+* readings
+  * [ ] [GloVe: Global Vectors for Word Representation (original GloVe paper)](CourseMaterials/readings/glove.pdf)
+  * [ ] [Improving Distributional Similarity with Lessons Learned from Word Embeddings](CourseMaterials/readings/ImprovingDistributionalSimilarity.pdf)
+  * [ ] [Evaluation methods for unsupervised word embeddings](CourseMaterials/readings/EmbeddingEvaluationMethods.pdf)
+* additional readings
+  * [ ] [A Latent Variable Model Approach to PMI-based Word Embeddings](CourseMaterials/additional/PMI-basedWordEmbeddings.pdf)
+  * [ ] [Linear Algebraic Structure of Word Senses, with Applications to Polysemy](CourseMaterials/additional/LinearAlgebraicStructureOfWordSenses.pdf)
+  * [ ] [On the Dimensionality of Word Embedding](CourseMaterials/additional/DimensionalityOfWordEmbedding.pdf)
 
 ### Assignments
 
