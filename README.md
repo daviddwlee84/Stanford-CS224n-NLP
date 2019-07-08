@@ -26,6 +26,7 @@ Course Related Links
   * [ ] [Efficient Estimation of Word Representations in Vector Space (original word2vec paper)](CourseMaterials/readings/word2vec.pdf)
   * [ ] [Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)](CourseMaterials/readings/NegativeSampling.pdf)
 * [Gensim example](CourseMaterials/GensimWordVectorVisualization.ipynb)
+  * preparing embedding: download [this](https://nlp.stanford.edu/data/glove.6B.zip) zip file and unzip the `glove.6B.*d.txt` files into `embedding/GloVe` directory
 
 #### Lecture 2: Word Vectors 2 and Word Senses
 
