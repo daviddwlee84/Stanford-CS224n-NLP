@@ -8,13 +8,19 @@ Course Related Links
 
 * [CS224n: Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)
 * [Lecture Videos](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
+* [Course contents backup](https://github.com/zhanlaoban/CS224N-Stanford-Winter-2019)
+* Others' answer
+  * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
+  * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
+  * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
 
 ## Schedule
 
-| Week          | Lectures                                                                                                                                               | Assignments                                          |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| 2019/7/1~7/7  | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses) | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
-| 2019/7/8~7/14 | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)          | [Assignment 2](#Assignment-2-word2vec)               |
+| Week           | Lectures                                                                                                                                               | Assignments                                          |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| 2019/7/1~7/7   | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses) | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
+| 2019/7/8~7/14  | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)          | -                                                    |
+| 2019/7/15~7/21 | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                            | [Assignment 2](#Assignment-2-word2vec)               |
 
 ### Lectures
 
@@ -53,6 +59,16 @@ Course Related Links
   * [ ] [Review of differential calculus](CourseMaterials/other/review-differential-calculus.pdf)
 * additional readings
   * [ ] [Natural Language Processing (Almost) from Scratch](CourseMaterials/other/NLPfromScratch.pdf)
+
+#### Lecture 4: Backpropagation and Computation Graphs
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture04-backprop.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes03-neuralnets.pdf) - same as lecture 3
+* readings
+  * [ ] [CS231n notes on network architectures](https://cs231n.github.io/neural-networks-1/)
+  * [ ] [Learning Representations by Backpropagating Errors](CourseMaterials/other/backprop_old.pdf)
+  * [ ] [Derivatives, Backpropagation, and Vectorization](CourseMaterials/other/derivatives.pdf)
+  * [ ] [Yes you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
 
 ### Assignments
 
