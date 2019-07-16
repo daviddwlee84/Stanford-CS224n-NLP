@@ -1,0 +1,207 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+% Undefined control sequence.
+% <argument> \exp \left \boldsymbol
+
+% For url in footnote, hyperlinks and bookmarks
+\usepackage{hyperref}
+\newcommand{\fnurl}[2]{
+  \href{#2}{#1}\footnote{\url{#2}}
+}
+
+\title{CS224n Assignment 2: \\ Understanding word2vec}
+\author{David Lee}
+
+
+% Common used unit
+\newcommand{\uxvc}[1]{\boldsymbol{u}_{#1}^{T} \boldsymbol{v}_{c}}
+\newcommand{\expuxvc}[1]{\exp {\left(\uxvc{#1}\right)}}
+% Common used formula
+% softmax
+\newcommand{\softmax}{\frac{\expuxvc{o}}{\sum_{w \in \mathrm{Vocab}} \expuxvc{w}}}
+% loss
+\newcommand{\Jsoftmax}{\boldsymbol{J}_{\text { naive-softmax }}\left(v_{c}, o, U\right)} % naive softmax
+\newcommand{\loss}{-\log P(O=o | C=c)}
+\newcommand{\Jnegsampling}{\boldsymbol{J}_{\text { neg-sample }}\left(v_{c}, o, U\right)} % negative sampling
+\newcommand{\negsamploss}{-\log \left(\sigma\left(\boldsymbol{u}_{o}^{T} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{T} \boldsymbol{v}_{c}\right)\right)}
+\newcommand{\Jskipgram}{\boldsymbol{J}_{\mathrm{skip-gram}}\left(\boldsymbol{v}_{c}, w_{t-m}, \ldots w_{t+m}, \boldsymbol{U}\right)} % naive softmax
+\newcommand{\singleskipgram}[1]{\boldsymbol{J}_{\text{#1}}\left(\boldsymbol{v}_{c}, w_{t+j}, \boldsymbol{U}\right)}
+% result
+\newcommand{\sigmoidD}[1]{\sigma(#1)(1 - \sigma(#1))}
+
+% Common used macro
+% partial derivative
+\newcommand{\partialD}[2]{\frac{\partial #1}{\partial #2}}
+
+\begin{document}
+\maketitle
+
+\paragraph{The given equations:}
+\begin{itemize}
+    \item {
+        the softmax function
+
+        \begin{equation}
+            P(O=o | C=c)=\softmax
+        \end{equation}
+    }
+    \item {
+        the loss function
+
+        \begin{equation}
+            \Jsoftmax=\loss
+        \end{equation}
+    }
+    \item {
+        the sigmoid function
+
+        \begin{equation}
+            \sigma(\boldsymbol{x})=\frac{1}{1+e^{-\boldsymbol{x}}}=\frac{e^{\boldsymbol{x}}}{e^{\boldsymbol{x}}+1}
+        \end{equation}
+    }
+\end{itemize}
+
+
+\paragraph{(a) Show that the naive-softmax loss given in Equeation (2) is the same as the cross-entropy loss between $\boldsymbol{y}$ and $\hat{\boldsymbol{y}}$; i.e., show that}
+\begin{equation}
+    -\sum_{w \in \text{ Vocab }} y_{w} \log \left(\hat{y}_{w}\right)=-\log \left(\hat{y}_{o}\right)
+\end{equation}
+
+Because the true label $y_w$ is a one-hot vector. And it is $1$ when $w$ is that vocabulary, otherwise it is $0$.
+
+$$
+y_w =
+\begin{cases}
+1, & \mbox{if } w = o \\
+0, & \mbox{if } w \neq o
+\end{cases}
+$$
+
+That is, the term can be reduce and represent with the negative log of its predict output vector.
+
+\paragraph{(b) Compute the partial derivative of $\Jsoftmax$ with respect to $\boldsymbol{v}_{c}$. Please write your
+answer in terms of $\boldsymbol{y}$, $\hat{\boldsymbol{y}}$, and $\boldsymbol{U}$}
+
+\fnurl{reference 1}{https://deepnotes.io/softmax-crossentropy}: Classification and Loss Evaluation - Softmax and Cross Entropy Loss
+
+\fnurl{reference 2}{https://www.themathpage.com/aCalc/exponential.htm}: Derivatives of $\log$ and $\exp$
+
+\begin{align*}
+    \partialD{\Jsoftmax}{\boldsymbol{v}_{c}} = \partialD{\loss}{\boldsymbol{v}_{c}} = \partialD{-\log \softmax}{\boldsymbol{v}_{c}} \\
+    = -(\partialD{\log\expuxvc{o}}{\boldsymbol{v}_{c}} - \partialD{\log\sum_{w \in \mathrm{Vocab}} \expuxvc{w}}{\boldsymbol{v}_{c}}) \\
+    = -\frac{1}{\expuxvc{o}}\partialD{\expuxvc{o}}{\boldsymbol{v}_{c}} + \frac{1}{\sum_{w \in \mathrm{Vocab}} \expuxvc{w}}\partialD{\sum_{w \in \mathrm{Vocab}} \expuxvc{w}}{\boldsymbol{v}_{c}} \\
+    = -\frac{1}{\expuxvc{o}}\expuxvc{o}\boldsymbol{u}_o + \sum_{w \in \mathrm{Vocab}} \frac{\expuxvc{w}}{\sum_{w \in \mathrm{Vocab}} \expuxvc{w}} \boldsymbol{u}_w \\
+    = -\boldsymbol{u}_o + \sum_{w \in \mathrm{Vocab}} P(O=w|C=c) \boldsymbol{u}_w \\
+    = U^T (\hat{\boldsymbol{y}} - \boldsymbol{y})
+\end{align*}
+
+
+\paragraph{(b) Compute the partial derivatives of $\Jsoftmax$ with respect to each of the ‘outside’ word vectors, $\boldsymbol{u}_w$'s. There will be two cases: when $w = o$, the true ‘outside’ word vector, and $w \neq o$, for all other words. Please write you answer in terms of $\boldsymbol{y}$, $\hat{\boldsymbol{y}}$, and $\boldsymbol{v}_c$}
+
+Basically shared the same derivation of the first part thus skip some steps (partial derivative on the $\log$)
+
+\begin{align*} % shared part
+    \partialD{\Jsoftmax}{\boldsymbol{v}_{w}} = \partialD{\loss}{\boldsymbol{v}_{w}} = \partialD{-\log \softmax}{\boldsymbol{v}_{w}} \\
+    = -(\partialD{\log\expuxvc{o}}{\boldsymbol{v}_{w}} - \partialD{\log\sum_{w \in \mathrm{Vocab}} \expuxvc{w}}{\boldsymbol{v}_{w}})
+\end{align*}
+
+If $w = o$:
+
+\begin{align*}
+    = -\boldsymbol{v}_c + \frac{\expuxvc{w}}{\sum_{w \in \mathrm{Vocab}} \expuxvc{w}} \boldsymbol{v}_c \\
+    = (P(O=o|C=c) - 1) \boldsymbol{v}_c
+\end{align*}
+
+If $w \neq o$:
+
+\begin{align*}
+    = 0 + \frac{\expuxvc{w}}{\sum_{w \in \mathrm{Vocab}} \expuxvc{w}} \boldsymbol{v}_c \\
+    = P(O=o|C=c) \boldsymbol{v}_c
+\end{align*}
+
+Thus, in summary:
+
+\begin{equation*}
+    \partialD{\Jsoftmax}{\boldsymbol{v}_{w}} = (\hat{\boldsymbol{y}} - \boldsymbol{y})^T \boldsymbol{v}_c
+\end{equation*}
+
+
+\paragraph{(d) The sigmoid function is given by Equation 3, Please compute the derivative of $\sigma(x)$ with respect to $\boldsymbol{x}$, where $\boldsymbol{x}$ is a vector}
+
+\begin{align*}
+    \partialD{\sigma(x)}{\boldsymbol{x}} = \partialD{\frac{e^{\boldsymbol{x}}}{e^{\boldsymbol{x}}+1}}{\boldsymbol{x}} \\
+    = \frac{e^x(e^x+1) - e^x e^x}{(e^x + 1)^2} \\
+    = \frac{e^x}{(e^x + 1)^2} \\
+    = \sigmoidD{x}
+\end{align*}
+
+
+\paragraph{(e) Now we shall consider the Negative Sampling loss, which is an alternative to the Naive Softmax loss. Assume that $K$ negative samples (words) are drawn from the vocabulary. For simplicity of notation we shall refer to them as $w_1,w_2,\dots,w_K$ and their outside vectors as $\boldsymbol{u}_1,...,\boldsymbol{u}_K$. Note that $o \notin {w_1,...,w_K}$. For a center word $c$ and an outside word $o$, the negative sampling loss function is given by:}
+\begin{equation}
+    \Jnegsampling = \negsamploss
+\end{equation}
+\paragraph{for a sample $w_1, . . . w_K$ , where $\sigma(\cdot)$ is the sigmoid function.}\footnote{Note: the loss function here is the negative of what Mikolov et al. had in their original paper, because we are doing a minimization instead of maximization in our assignment code. Ultimately, this is the same objective function.}
+\paragraph{Please repeat parts (b) and (c), computing the partial derivatives of $J_{\text { neg-sample }}$ with respect to $\boldsymbol{v}_c$, with respect to $\boldsymbol{u}_o$, and with respect to a negative sample $\boldsymbol{u}_k$. Please write your answers in terms of the vectors $\boldsymbol{v}_c$, $\boldsymbol{u}_o$, and $\boldsymbol{u}_k$, where $k \in [1,K]$. After you've done this, describe with one sentence why this loss function is much more efficient to compute than the naive-softmax loss. Note, you should be able to use your solution to part (d) to help compute the necessary gradients here.}
+
+\begin{enumerate}
+    \item $\Jnegsampling$ with respect to $\boldsymbol{v}_c$ {
+        \begin{align*}
+            \partialD{\Jnegsampling}{\boldsymbol{v}_c} = \partialD{\negsamploss}{\boldsymbol{v}_c} \\
+            = -\frac{\sigmoidD{\uxvc{o}}}{\sigma{\uxvc{o}}} \partialD{\uxvc{o}}{\boldsymbol{v}_c} - \sum_{k=1}^{K} \partialD{\log \left(\sigma\left(-\boldsymbol{u}_{k}^{T} \boldsymbol{v}_{c}\right)\right)}{\boldsymbol{v}_c} \\
+            = -\left(1-\sigma\left(\boldsymbol{u}_{o}^{T} \boldsymbol{v}_{c}\right)\right) \boldsymbol{u}_{o}+\sum_{k=1}^{K}\left(1-\sigma\left(-\boldsymbol{u}_{k}^{T} \boldsymbol{v}_{c}\right)\right) \boldsymbol{u}_{k}
+        \end{align*}
+    }
+    \item $\Jnegsampling$ with respect to $\boldsymbol{u}_o$ {
+        \begin{align*}
+            \partialD{\Jnegsampling}{\boldsymbol{u}_o} = \partialD{\negsamploss}{\boldsymbol{u}_o} \\
+            = \partialD{\left(-\log \left(\sigma\left(\boldsymbol{u}_{o}^{T} \boldsymbol{v}_{c}\right)\right)\right.}{\boldsymbol{u}_{o}} \\
+            = -\left(1-\sigma\left(\boldsymbol{u}_{o}^{T} \boldsymbol{v}_{c}\right)\right) \boldsymbol{v}_{c}
+        \end{align*}
+    }
+    \item $\Jnegsampling$ with respect to $\boldsymbol{u}_k$ {
+        \begin{align*}
+            \partialD{\Jnegsampling}{\boldsymbol{u}_k} = \partialD{\negsamploss}{\boldsymbol{u}_k} \\
+            = \partialD{\left(-\log \left(\sigma\left(-\boldsymbol{u}_{k}^{T} \boldsymbol{v}_{c}\right)\right)\right.}{\boldsymbol{u}_{k}} \\
+            = \left(1-\sigma\left(-\boldsymbol{u}_{k}^{T} \boldsymbol{v}_{c}\right)\right) \boldsymbol{v}_{c}
+        \end{align*}
+    }
+\end{enumerate}
+
+
+\paragraph{(f) Suppose the center word is $c = w_t$ and the context window is $[w_{t−m}, \dots, w_{t−1}, w_t, w_{t+1}, \dots, w_{t+m}]$, where $m$ is the context window size. Recall that for the skip-gram version of word2vec, the total loss for the context window is:}
+\begin{equation}
+    \Jskipgram = \sum_{-m \leq j \leq m \atop j \neq 0} \singleskipgram{~}
+\end{equation}
+\paragraph{Here, $\singleskipgram{~}$ represents an arbitrary loss term for the center word $c = w_t$ and outside word $w_{t+j}$. $\singleskipgram{~}$ could be $\singleskipgram{naive-softmax}$ or $\singleskipgram{neg-sample}$, depending on your implementation.}
+\paragraph{Write down three partial derivatives:}
+\begin{enumerate}
+    \item $\partial \boldsymbol{J}_{\text { skip-gram }}\left(\boldsymbol{v}_{c}, w_{t-m}, \ldots w_{t+m}, \boldsymbol{U}\right) / \partial \boldsymbol{U}$
+    \item $\partial \boldsymbol{J}_{\text { skip-gram }}\left(\boldsymbol{v}_{c}, w_{t-m}, \ldots w_{t+m}, \boldsymbol{U}\right) / \partial \boldsymbol{v}_{c}$
+    \item $\partial \boldsymbol{J}_{\mathrm{skip-gram}}\left(\boldsymbol{v}_{c}, w_{t-m}, \ldots w_{t+m}, \boldsymbol{U}\right) / \partial \boldsymbol{v}_{w}$ when $w \neq c$
+\end{enumerate}
+\paragraph{Write your answers in terms of $\partial \singleskipgram{~} / \partial \boldsymbol{U}$ and $\partial \singleskipgram{~} / \partial \boldsymbol{v}_{c}$. This is very simple - each solution should be one line.}
+
+\begin{enumerate}
+    \item {
+        \begin{align*}
+            \partialD{\Jskipgram}{\boldsymbol{U}} \\
+            = \sum_{-m \leq j \leq m \atop j \neq 0} \partialD{\singleskipgram{~}}{\boldsymbol{U}}
+        \end{align*}
+    }
+    \item {
+        \begin{align*}
+            \partialD{\Jskipgram}{\boldsymbol{v}_c} \\
+            = \sum_{-m \leq j \leq m \atop j \neq 0} \partialD{\singleskipgram{~}}{\boldsymbol{v}_c} \\
+        \end{align*}
+    }
+    \item when $w \neq c$ {
+        \begin{align*}
+            \partialD{\Jskipgram}{\boldsymbol{v}_w}  \\
+            = \sum_{-m \leq j \leq m \atop j \neq 0} \partialD{\singleskipgram{~}}{\boldsymbol{v}_w} = 0 \\
+        \end{align*}
+    }
+\end{enumerate}
+
+\end{document}
