@@ -35,6 +35,14 @@ Course Related Links
 * [Gensim example](CourseMaterials/GensimWordVectorVisualization.ipynb)
   * preparing embedding: download [this](https://nlp.stanford.edu/data/glove.6B.zip) zip file and unzip the `glove.6B.*d.txt` files into `embedding/GloVe` directory
 
+Outline
+
+* Introduction to Word2vec
+  * objective function
+  * prediction function
+  * how to train it
+* Optimization: Gradient Descent & Chain Rule
+
 #### Lecture 2: Word Vectors 2 and Word Senses
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture02-wordvecs2.pdf)
@@ -48,6 +56,17 @@ Course Related Links
   * [ ] [Linear Algebraic Structure of Word Senses, with Applications to Polysemy](CourseMaterials/additional/LinearAlgebraicStructureOfWordSenses.pdf)
   * [ ] [On the Dimensionality of Word Embedding](CourseMaterials/additional/DimensionalityOfWordEmbedding.pdf)
 
+Outline
+
+* More detail to Word2vec
+  * Skip-grams (SG)
+  * Continuous Bag of Words (CBOW)
+* Similarity visualization
+* Co-occurrence matrix + SVD (LSA) vs. Embedding
+* Evaluation on word vectors
+  * Intrinsic
+  * Extrinsic
+
 #### Lecture 3: Word Window Classification, Neural Networks, and Matrix Calculus
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture03-neuralnets.pdf)
@@ -60,6 +79,16 @@ Course Related Links
 * additional readings
   * [ ] [Natural Language Processing (Almost) from Scratch](CourseMaterials/other/NLPfromScratch.pdf)
 
+Outline
+
+* Some basic idea of NLP tasks
+* Matrix Calculus
+  * Jacobian Matrix
+  * Shape convention
+* Loss
+  * Softmax
+  * Cross-entropy
+
 #### Lecture 4: Backpropagation and Computation Graphs
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture04-backprop.pdf)
@@ -69,6 +98,19 @@ Course Related Links
   * [ ] [Learning Representations by Backpropagating Errors](CourseMaterials/other/backprop_old.pdf)
   * [ ] [Derivatives, Backpropagation, and Vectorization](CourseMaterials/other/derivatives.pdf)
   * [ ] [Yes you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b)
+
+Outline
+
+* Computational Graph
+* Backprop & Forwardprop
+* Introducing regularization to prevent overfitting
+* Non-linearity: activation functions
+* Practical Tips
+  * Parameter Initialization
+  * Optimizers
+    * plain SGD
+    * more sophisticated adaptive optimizers
+  * Learing Rates
 
 ### Assignments
 
