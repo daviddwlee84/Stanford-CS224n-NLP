@@ -126,6 +126,9 @@ Outline
 * [directory](Assignments/a2)
   * [written](Assignments/a2/written)
   * [code](Assignments/a2/code)
+    * `python3 word2vec.py` check the correctness of word2vec
+    * `python3 sgd.py` check the correctness of SGD
+    * `./get_datasets.sh; python3 run.py` - training took 9480 seconds
 
 Related
 
