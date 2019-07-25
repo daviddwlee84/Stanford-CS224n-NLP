@@ -13,6 +13,7 @@ Course Related Links
   * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
   * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
   * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
+  * [ZeyadZanaty/cs224n-assignments](https://github.com/ZeyadZanaty/cs224n-assignments) (just coding part assignment 2, 3)
 
 ## Schedule
 
@@ -125,3 +126,12 @@ Outline
 * [directory](Assignments/a2)
   * [written](Assignments/a2/written)
   * [code](Assignments/a2/code)
+
+Related
+
+* [Data processing in cs224n assignment 2 word2vec (2019)](https://medium.com/@ilyarudyak/data-processing-in-cs224n-assignment-2-word2vec-2019-288bdc8d4cb6)
+
+Others' Answer
+
+* [ZacBi/CS224n-2019-solutions/.../word2vec.py](https://github.com/ZacBi/CS224n-2019-solutions/blob/master/Assignments/a2/word2vec.py)
+* [ZeyadZanaty/cs224n-assignments/.../word2vec.py](https://github.com/ZeyadZanaty/cs224n-assignments/blob/master/Assignment-2/word2vec.py)
