@@ -17,11 +17,54 @@ Course Related Links
 
 ## Schedule
 
-| Week           | Lectures                                                                                                                                               | Assignments                                          |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| 2019/7/1~7/7   | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses) | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
-| 2019/7/8~7/14  | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)          | -                                                    |
-| 2019/7/15~7/21 | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                            | [Assignment 2](#Assignment-2-word2vec)               |
+| Week             | Lectures                                                                                                                                               | Assignments                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses) | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
+| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)          | -                                                    |
+| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                            | [Assignment 2](#Assignment-2-word2vec)               |
+| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                         | -                                                    |
+
+Lecture
+
+1. [X] Introduction and Word Vectors
+2. [X] Word Vectors 2 and Word Senses
+3. [X] Word Window Classification, Neural Networks, and Matrix Calculus
+4. [X] Backpropagation and Computation Graphs
+5. [ ] Linguistic Structure: Dependency Parsing
+6. [ ] The probability of a sentence? Recurrent Neural Networks and Language Models
+7. [ ] Vanishing Gradients and Fancy RNNs
+8. [ ] Machine Translation, Seq2Seq and Attention
+9. [ ] Practical Tips for Final Projects
+10. [ ] Question Answering and the Default Final Project
+11. [ ] ConvNets for NLP
+12. [ ] Information from parts of words: Subword Models
+13. [ ] Modeling contexts of use: Contextual Representations and Pretraining
+14. [ ] Transformers and Self-Attention For Generative Models
+15. [ ] Natural Language Generation
+16. [ ] Reference in Language and Coreference Resolution
+17. [ ] Multitask Learning: A general model for NLP?
+18. [ ] Constituency Parsing and Tree Recursive Neural Networks
+19. [ ] Safety, Bias, and Fairness
+20. [ ] Future of NLP + Deep Learning
+
+Assignment
+
+1. [X] Exploring Word Vectors
+2. [X] word2vec
+   1. [X] code
+   2. [X] written
+
+Paper reading
+
+* [ ] word2vec
+* [ ] negative sampling
+* [ ] GloVe
+* [ ] improveing distrubutional similarity
+* [ ] embedding evaluation methods
+
+Derivation
+
+* [ ] backprop
 
 ### Lectures
 
@@ -112,6 +155,17 @@ Outline
     * plain SGD
     * more sophisticated adaptive optimizers
   * Learing Rates
+
+#### Lecture 5: Linguistic Structure: Dependency Parsing
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture05-dep-parsing.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes04-dependencyparsing.pdf)
+  * readings
+    * [ ] Incrementality in Deterministic Dependency Parsing
+    * [ ] A Fast and Accurate Dependency Parser using Neural Networks
+    * [ ] Dependency Parsing
+    * [ ] Globally Normalized Transition-Based Neural Networks
+    * [ ] Universal Stanford Dependencies: A cross-linguistic typology
 
 ### Assignments
 
