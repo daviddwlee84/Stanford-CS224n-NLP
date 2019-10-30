@@ -23,6 +23,7 @@ Course Related Links
 | 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)          | -                                                    |
 | 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                            | [Assignment 2](#Assignment-2-word2vec)               |
 | 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                         | -                                                    |
+| 2019/10/28~11/3  | -                                                                                                                                                      | [Assignment 3](#Assignment-3-Dependency-Parsing)     |
 
 Lecture
 
@@ -167,6 +168,8 @@ Outline
     * [ ] Globally Normalized Transition-Based Neural Networks
     * [ ] Universal Stanford Dependencies: A cross-linguistic typology
 
+> mentioned CS103, CS228
+
 ### Assignments
 
 #### Assignment 1: Exploring Word Vectors
@@ -178,7 +181,7 @@ Outline
 
 * [handout](Assignments/a2/a2.pdf)
 * [directory](Assignments/a2)
-  * [written](Assignments/a2/written)
+  * [written](Assignments/a2/written/assignment2.pdf)
   * [code](Assignments/a2/code)
     * `python3 word2vec.py` check the correctness of word2vec
     * `python3 sgd.py` check the correctness of SGD
@@ -192,3 +195,10 @@ Others' Answer
 
 * [ZacBi/CS224n-2019-solutions/.../word2vec.py](https://github.com/ZacBi/CS224n-2019-solutions/blob/master/Assignments/a2/word2vec.py)
 * [ZeyadZanaty/cs224n-assignments/.../word2vec.py](https://github.com/ZeyadZanaty/cs224n-assignments/blob/master/Assignment-2/word2vec.py)
+
+#### Assignment 3: Dependency Parsing
+
+* [handout](Assignments/a3/a3.pdf)
+* [directory](Assignments/a3)
+  * [written](Assignments/a3/written)
+  * [code](Assignments/a3/code)
