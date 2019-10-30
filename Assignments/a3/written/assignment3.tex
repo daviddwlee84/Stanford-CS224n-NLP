@@ -1,0 +1,119 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+% Undefined control sequence.
+% <argument> \exp \left \boldsymbol
+
+% For url in footnote, hyperlinks and bookmarks
+\usepackage{hyperref}
+\newcommand{\fnurl}[2]{
+  \href{#2}{#1}\footnote{\url{#2}}
+}
+
+% For resize box
+\usepackage{graphicx}
+
+% For dependency parsing tree
+\usepackage{forest}
+\forestset{
+dg edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom,where n children=0{tier=word,edge=dotted,calign with current edge}{}}},
+}
+
+\title{CS224n Assignment 3: \\ Dependency Parsing}
+\author{David Lee}
+
+\begin{document}
+\maketitle
+
+\section{Machine Learning \& Neural Networks}
+\subsection{Adam Optimizer}
+\subsubsection{Momentum: Briefly explain how using $\mathbf{m}$ stops the updates from varying as much and why this low variance may be helpful to learning, overall.}
+
+The momentum (exponentially weighted moving average) makes the current gradient not just dependent on its mini-batch gradient (like SGD did). In some case, if the learning rate is too large we will miss the optimized solution (diverge), but if the learning is too small then it will converge very slow.
+
+This using momentum imply the benefit of:
+
+\begin{itemize}
+  \item reduce oscillation: make the learning rate more stable (not change too fast)
+  \item faster convergence: we can set a larger initial learning rate and it will adjust by itself
+\end{itemize}
+
+\subsubsection{Adaptive Learning Rates: Since Adam divides the update by $\sqrt{\mathbf{v}}$, which of the model parameters will get larger updates? Why might this help with learning?}
+
+The model parameters which receive small or infrequent updates will get larger updates.
+
+Consider the opposite situation, the model parameters which recive larger updates will have their effective learning rate reduced. Thus we can regard adaptive learning rates as normalization of the parameter update step by element wise. 
+
+\subsection{Dropout}
+
+\subsubsection{What must $\gamma$ equal in terms of $p_{\text{drop}}$? Briefly justify your answer.}
+
+The purpose of $\gamma$ is said to make the expected value of $\mathbf{h}_{\text{drop}}$ is still $\mathbf{h}$
+
+Thus $\gamma$ must be $1 \over (1 - p_{\text{drop}})$ because the expected value of $\mathbf{d}$ is $(1 - p_{\text{drop}})$
+
+\subsubsection{Why should we apply dropout during training but not during evaluation?}
+
+The regularization technique is aimed to prevent overfitting. Since overfitting only happen during training.
+
+\section{Neural Transition-Based Dependency Parsing}
+
+\subsection{Parse the sentence ``I parsed this sentence correctly" by given dependencies.}
+
+\begin{forest}
+  dg edges
+  [V
+    [Subj.
+      [I]
+    ]
+    [parsed]
+    [Obj. 
+      [Det.
+        [this]
+      ]
+      [sentence]
+    ]
+    [Adv.
+      [correctly]
+    ]
+  ]
+\end{forest}
+
+\begin{table}[h]
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{l|l|l|l}
+      Stack                              & Buffer                                     & New dependency                 & Transition            \\
+      \hline
+      {[}ROOT{]}                         & {[}I, parsed, this, sentence, correctly{]} &                                & Initial Configuration \\
+      {[}ROOT, I{]}                      & {[}parsed, this, sentence, correctly{]}    &                                & SHIFT                 \\
+      {[}ROOT, I, parsed{]}              & {[}this, sentence, correctly{]}            &                                & SHIFT                 \\
+      {[}ROOT, parsed{]}                 & {[}this, sentence, correctly{]}            & I $\leftarrow$ parsed          & LEFT-ARC              \\
+      {[}ROOT, parsed, this{]}           & {[}sentence, correctly{]}                  &                                & SHIFT                 \\
+      {[}ROOT, parsed, this, sentence{]} & {[}correctly{]}                            &                                & SHIFT                 \\
+      {[}ROOT, parsed, sentence{]}       & {[}correctly{]}                            & this $\leftarrow$ sentence     & LEFT-ARC              \\
+      {[}ROOT, parsed{]}                 & {[}correctly{]}                            & parsed $\rightarrow$ sentence  & RIGHT-ARC             \\
+      {[}ROOT, parsed, correctly{]}      & {[}{]}                                     &                                & SHIFT                 \\
+      {[}ROOT, parsed{]}                 & {[}{]}                                     & parsed $\rightarrow$ correctly & RIGHT-ARC             \\
+      {[}ROOT{]}                         & {[}{]}                                     & ROOT $\rightarrow$ parsed      & RIGHT-ARC            
+      \end{tabular}
+  }
+  \caption{Parsing the sentence ``I parsed this sentence correctly" with optimal steps (assume we have trained a classifier).}
+  \label{tab:parse-sentence}
+\end{table}
+
+\subsection{A sentence containing $n$ words will be parsed in how many steps (in terms of $n$)? Briefly explain why.}
+
+A sentence will be parsed in $2 n$ times. Because we will eventually move all words from the \textit{Buffer} to \textit{Stack} (the SHIFT step) and then remove all words from the \textit{Stack} (the ARC steps).
+
+% TODO part f
+% For each sentence, state the type of error, the incorrect dependency, and the correct dependency.
+%
+% \begin{itemize}
+%   \item Error type:
+%   \item Incorrect dependency:
+%   \item Correct dependency:
+% \end{itemize}
+
+\end{document}

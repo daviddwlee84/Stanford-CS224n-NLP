@@ -10,6 +10,7 @@ Course Related Links
 * [Lecture Videos](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
 * [Course contents backup](https://github.com/zhanlaoban/CS224N-Stanford-Winter-2019)
 * Others' answer
+  * [Luvata/CS224N-2019: My completed implementation solutions for CS224N 2019](https://github.com/Luvata/CS224N-2019)
   * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
   * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
   * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
@@ -200,5 +201,9 @@ Others' Answer
 
 * [handout](Assignments/a3/a3.pdf)
 * [directory](Assignments/a3)
-  * [written](Assignments/a3/written)
+  * [written](Assignments/a3/written/assignment3.pdf)
   * [code](Assignments/a3/code)
+
+Others' Answer
+
+* [CS224N-2019/Assignment/a3 at master · Luvata/CS224N-2019](https://github.com/Luvata/CS224N-2019/tree/master/Assignment/a3)
