@@ -199,12 +199,19 @@ Others' Answer
 
 #### Assignment 3: Dependency Parsing
 
+> [A Fast and Accurate Dependency Parser using Neural Networks](https://nlp.stanford.edu/pubs/emnlp2014-depparser.pdf)
+
 * [handout](Assignments/a3/a3.pdf)
 * [directory](Assignments/a3)
   * [written](Assignments/a3/written/assignment3.pdf)
   * [code](Assignments/a3/code)
     * `python3 parser_transitions.py part_c` check the corretness of transition mechanics
     * `python3 parser_transitions.py part_d` check the correctness of minibatch parse
+    * `python3 run.py`
+      * set `debug=True` to test the process ([`debug_out.log`](Assignments/a3/debug_out.log))
+      * set `debug=False` to train on the entire dataset ([`train_out.log`](Assignments/a3/train_out.log))
+        * best UAS on the dev set: 88.79 (epoch 9/10)
+        * best UAS on the test set: 89.27
 
 Others' Answer
 

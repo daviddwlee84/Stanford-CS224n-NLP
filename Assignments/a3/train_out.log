@@ -1,0 +1,104 @@
+================================================================================
+INITIALIZING
+================================================================================
+Loading data...
+took 1.66 seconds
+Building parser...
+took 1.09 seconds
+Loading pretrained embeddings...
+took 2.33 seconds
+Vectorizing data...
+took 1.22 seconds
+Preprocessing training data...
+took 36.66 seconds
+took 0.02 seconds
+
+================================================================================
+TRAINING
+================================================================================
+Epoch 1 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:24<00:00, 12.80it/s]
+Average Train Loss: 0.1811775163711085                                       
+Evaluating on dev set
+1445850it [00:00, 55091248.37it/s]                                                   
+- dev UAS: 83.97
+New best dev UAS! Saving model.
+
+Epoch 2 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:22<00:00, 12.96it/s]
+Average Train Loss: 0.11446824673869652
+Evaluating on dev set
+1445850it [00:00, 54143909.49it/s]                                                   
+- dev UAS: 86.19
+New best dev UAS! Saving model.
+
+Epoch 3 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:25<00:00, 12.68it/s]
+Average Train Loss: 0.10042866761695383
+Evaluating on dev set
+1445850it [00:00, 52429706.56it/s]                                                   
+- dev UAS: 87.25
+New best dev UAS! Saving model.
+
+Epoch 4 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:23<00:00, 12.87it/s]
+Average Train Loss: 0.09164750121243588
+Evaluating on dev set
+1445850it [00:00, 53943554.87it/s]                                                   
+- dev UAS: 87.59
+New best dev UAS! Saving model.
+
+Epoch 5 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:23<00:00, 12.87it/s]
+Average Train Loss: 0.08543391828526022
+Evaluating on dev set
+1445850it [00:00, 45921402.09it/s]                                                   
+- dev UAS: 88.12
+New best dev UAS! Saving model.
+
+Epoch 6 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:25<00:00, 12.72it/s]
+Average Train Loss: 0.08023003809299174
+Evaluating on dev set
+1445850it [00:00, 52172600.90it/s]                                                   
+- dev UAS: 88.10
+
+Epoch 7 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:24<00:00, 12.81it/s]
+Average Train Loss: 0.07596558222176257
+Evaluating on dev set
+1445850it [00:00, 31897068.40it/s]                                                   
+- dev UAS: 88.19
+New best dev UAS! Saving model.
+
+Epoch 8 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:20<00:00, 13.11it/s]
+Average Train Loss: 0.0725291249326136
+Evaluating on dev set
+1445850it [00:00, 53948833.62it/s]                                                   
+- dev UAS: 88.72
+New best dev UAS! Saving model.
+
+Epoch 9 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:22<00:00, 12.98it/s]
+Average Train Loss: 0.06974130065192456
+Evaluating on dev set
+1445850it [00:00, 49851493.15it/s]                                                   
+- dev UAS: 88.79
+New best dev UAS! Saving model.
+
+Epoch 10 out of 10
+100%|████████████████████████████████████████████| 1848/1848 [02:18<00:00, 13.33it/s]
+Average Train Loss: 0.06653358527253588
+Evaluating on dev set
+1445850it [00:00, 56306609.33it/s]                                                   
+- dev UAS: 88.58
+
+================================================================================
+TESTING
+================================================================================
+Restoring the best model weights found on the dev set
+Final evaluation on test set
+2919736it [00:00, 79620956.03it/s]                                                   
+- test UAS: 89.27
+Done!
