@@ -7,6 +7,7 @@ Sahil Chopra <schopra8@stanford.edu>
 """
 
 import sys
+from collections import deque
 
 class PartialParse(object):
     def __init__(self, sentence):
@@ -31,6 +32,9 @@ class PartialParse(object):
         ### Note: The root token should be represented with the string "ROOT"
         ###
 
+        self.stack = ['ROOT']
+        self.buffer = sentence.copy()
+        self.dependencies = []
 
         ### END YOUR CODE
 
@@ -50,6 +54,25 @@ class PartialParse(object):
         ###         2. Left Arc
         ###         3. Right Arc
 
+        assert transition in ('S', 'LA', 'RA')
+
+        if transition == 'S':
+            # removes the first word from the buffer and pushes it onto the stack
+            self.stack.append(self.buffer[0])
+            self.buffer.remove(self.buffer[0])
+        else:
+            if transition == 'LA':
+                # marks the second (second most recently added) item on the stack as a dependent of
+                # the first item and removes the second item from the stack.
+                head = self.stack[-1]
+                dependent = self.stack[-2]
+            elif transition == 'RA':
+                # marks the first (most recently added) item on the stack as a dependent of
+                # the second item and removes the first item from the stack.
+                head = self.stack[-2]
+                dependent = self.stack[-1]
+            self.dependencies.append((head, dependent))
+            self.stack.remove(dependent)
 
         ### END YOUR CODE
 
