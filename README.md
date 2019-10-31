@@ -204,6 +204,7 @@ Others' Answer
   * [written](Assignments/a3/written/assignment3.pdf)
   * [code](Assignments/a3/code)
     * `python3 parser_transitions.py part_c` check the corretness of transition mechanics
+    * `python3 parser_transitions.py part_d` check the correctness of minibatch parse
 
 Others' Answer
 
