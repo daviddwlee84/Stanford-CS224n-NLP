@@ -25,6 +25,7 @@ Course Related Links
 | 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                            | [Assignment 2](#Assignment-2-word2vec)               |
 | 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                         | -                                                    |
 | 2019/10/28~11/3  | -                                                                                                                                                      | [Assignment 3](#Assignment-3-Dependency-Parsing)     |
+| 2019/11/4~11/10  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                | -                                                    |
 
 Lecture
 
@@ -32,7 +33,7 @@ Lecture
 2. [X] Word Vectors 2 and Word Senses
 3. [X] Word Window Classification, Neural Networks, and Matrix Calculus
 4. [X] Backpropagation and Computation Graphs
-5. [ ] Linguistic Structure: Dependency Parsing
+5. [X] Linguistic Structure: Dependency Parsing
 6. [ ] The probability of a sentence? Recurrent Neural Networks and Language Models
 7. [ ] Vanishing Gradients and Fancy RNNs
 8. [ ] Machine Translation, Seq2Seq and Attention
@@ -53,6 +54,9 @@ Assignment
 
 1. [X] Exploring Word Vectors
 2. [X] word2vec
+   1. [X] code
+   2. [X] written
+3. [X] Dependency Parsing
    1. [X] code
    2. [X] written
 
@@ -170,6 +174,16 @@ Outline
     * [ ] Universal Stanford Dependencies: A cross-linguistic typology
 
 > mentioned CS103, CS228
+
+#### Lecture 6: The probability of a sentence? Recurrent Neural Networks and Language Models
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture06-rnnlm.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes05-LM_RNN.pdf)
+  * readings
+    * [ ] [N-gram Language Models](CourseMaterials/other/Ch3_N-gram_Language_Models.pdf) (textbook chapter)
+    * [ ] [The Unreasonable Effectiveness of Recurrent Neural Networks](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) (blog post overview)
+    * [ ] [Sequence Modeling: Recurrent and Recursive Neural Nets](http://www.deeplearningbook.org/contents/rnn.html) (Sections 10.1 and 10.2)
+    * [ ] [On Chomsky and the Two Cultures of Statistical Learning](http://norvig.com/chomsky.html)
 
 ### Assignments
 
