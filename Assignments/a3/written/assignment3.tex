@@ -20,6 +20,15 @@
 dg edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom,where n children=0{tier=word,edge=dotted,calign with current edge}{}}},
 }
 
+% For custom title
+\usepackage{titlesec}
+\titleformat{\section}{\bf\large}{\thesection.~}{1em}{}
+\titleformat{\subsection}{\bf}{(\alph{subsection})~}{0pt}{}
+\titleformat{\subsubsection}{}{\roman{subsubsection}.~}{0em}{}
+
+% For delete line
+\usepackage{ulem}
+
 \title{CS224n Assignment 3: \\ Dependency Parsing}
 \author{David Lee}
 
@@ -107,13 +116,44 @@ The regularization technique is aimed to prevent overfitting. Since overfitting 
 
 A sentence will be parsed in $2 n$ times. Because we will eventually move all words from the \textit{Buffer} to \textit{Stack} (the SHIFT step) and then remove all words from the \textit{Stack} (the ARC steps).
 
-% TODO part f
-% For each sentence, state the type of error, the incorrect dependency, and the correct dependency.
-%
-% \begin{itemize}
-%   \item Error type:
-%   \item Incorrect dependency:
-%   \item Correct dependency:
-% \end{itemize}
+% Part f
+% Attachment Errors:
+% 1. PP
+% 2. VP
+% 3. Modifier
+% 4. Coordination
+\subsection{For each sentence, state the type of error, the incorrect dependency, and the correct dependency. (i.e. part \textbf{(f)} answer)}
+
+\subsubsection{I was heading to a wedding fearing my death}
+
+\begin{itemize}
+  \item Error type: Verb Phrase Attachment Error
+  \item Incorrect dependency: wedding $\rightarrow$ fearing
+  \item Correct dependency: heading $\rightarrow$ fearing
+\end{itemize}
+
+\subsubsection{It makes me want to rush out and rescue people from dilemmas of their own making .}
+
+\begin{itemize}
+  \item Error type: Coordination Attachment Error
+  \item Incorrect dependency: and $\leftarrow$ rescue
+  \item Correct dependency: rush (\sout{want}) $\rightarrow$ and
+\end{itemize}
+
+\subsubsection{It is on loan from a guy named Joe O'Neill in Midland , Texas .}
+
+\begin{itemize}
+  \item Error type: Prepositional Phrase Attachment Error
+  \item Incorrect dependency: named $\rightarrow$ Midland
+  \item Correct dependency: guy $\rightarrow$ Midland
+\end{itemize}
+
+\subsubsection{Brain has been one of the most crucial elements to the success of Mozilla software .}
+
+\begin{itemize}
+  \item Error type: Modifier Attachment Error
+  \item Incorrect dependency: most $\leftarrow$ elements
+  \item Correct dependency: most $\leftarrow$ crucial
+\end{itemize}
 
 \end{document}
