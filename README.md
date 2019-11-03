@@ -24,8 +24,8 @@ Course Related Links
 | 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)          | -                                                    |
 | 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                            | [Assignment 2](#Assignment-2-word2vec)               |
 | 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                         | -                                                    |
-| 2019/10/28~11/3  | -                                                                                                                                                      | [Assignment 3](#Assignment-3-Dependency-Parsing)     |
-| 2019/11/4~11/10  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                | -                                                    |
+| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                | [Assignment 3](#Assignment-3-Dependency-Parsing)     |
+| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns)                                                                    | -                                                    |
 
 Lecture
 
@@ -166,12 +166,13 @@ Outline
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture05-dep-parsing.pdf)
 * [notes](CourseMaterials/notes/cs224n-2019-notes04-dependencyparsing.pdf)
-  * readings
-    * [ ] Incrementality in Deterministic Dependency Parsing
-    * [ ] A Fast and Accurate Dependency Parser using Neural Networks
-    * [ ] Dependency Parsing
-    * [ ] Globally Normalized Transition-Based Neural Networks
-    * [ ] Universal Stanford Dependencies: A cross-linguistic typology
+* readings
+  * [ ] [Incrementality in Deterministic Dependency Parsing](CourseMaterials/readings/Incrementality_in_Deterministic_Dependency_Parsing.pdf)
+  * [ ] A Fast and Accurate Dependency Parser using Neural Networks
+  * [ ] [Dependency Parsing](https://www.morganclaypool.com/doi/abs/10.2200/S00169ED1V01Y200901HLT002)
+  * [ ] [Globally Normalized Transition-Based Neural Networks](CourseMaterials/readings/Globally_Normalized_Transition-Based_Neural_Networks.pdf)
+  * [ ] [Universal Stanford Dependencies: A cross-linguistic typology](CourseMaterials/readings/Universal_Dependencies_A_cross-linguistic_typology.pdf)
+  * [X] [**Universal Dependencies website**](https://universaldependencies.org/)
 
 > mentioned CS103, CS228
 
@@ -179,11 +180,26 @@ Outline
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture06-rnnlm.pdf)
 * [notes](CourseMaterials/notes/cs224n-2019-notes05-LM_RNN.pdf)
-  * readings
-    * [ ] [N-gram Language Models](CourseMaterials/other/Ch3_N-gram_Language_Models.pdf) (textbook chapter)
-    * [ ] [The Unreasonable Effectiveness of Recurrent Neural Networks](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) (blog post overview)
-    * [ ] [Sequence Modeling: Recurrent and Recursive Neural Nets](http://www.deeplearningbook.org/contents/rnn.html) (Sections 10.1 and 10.2)
-    * [ ] [On Chomsky and the Two Cultures of Statistical Learning](http://norvig.com/chomsky.html)
+* readings
+  * [ ] [N-gram Language Models](CourseMaterials/readings/Ch3_N-gram_Language_Models.pdf) (textbook chapter)
+  * [ ] [The Unreasonable Effectiveness of Recurrent Neural Networks](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) (blog post overview)
+  * [ ] [Sequence Modeling: Recurrent and Recursive Neural Nets](http://www.deeplearningbook.org/contents/rnn.html) (Sections 10.1 and 10.2)
+  * [ ] [On Chomsky and the Two Cultures of Statistical Learning](http://norvig.com/chomsky.html)
+
+> * N-gram Language Model
+> * Fixed-window Neural Language Model
+> * vanilla RNN
+
+#### Lecture 7: Vanishing Gradients and Fancy RNNs
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture07-fancy-rnn.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes05-LM_RNN.pdf) - same as lecture 6
+* readings
+  * [ ] [Sequence Modeling: Recurrent and Recursive Neural Nets](http://www.deeplearningbook.org/contents/rnn.html) - (textbook sections 10.3, 10.5, 10.7-10.12)
+  * [ ] [Learning long-term dependencies with gradient descent is difficult](CourseMaterials/readings/tnn-94-gradient.pdf) (one of the original vanishing gradient papers)
+  * [ ] [On the difficulty of training Recurrent Neural Networks](CourseMaterials/readings/On_the_difficulty_of_training_Recurrent_Neural_Networks.pdf) (proof of vanishing gradient problem)
+  * [ ] [Vanishing Gradients Jupyter Notebook](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1174/lectures/vanishing_grad_example.html) (demo for feedforward networks)
+  * [X] [**Understanding LSTM Networks**](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) (blog post overview)
 
 ### Assignments
 
