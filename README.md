@@ -26,6 +26,7 @@ Course Related Links
 | 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                          | -                                                        |
 | 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                 | [Assignment 3](#Assignment-3-Dependency-Parsing)         |
 | 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention) | [Assignment 4](#assignment-4-neural-machine-translation) |
+| 2019/11/11~11/16 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models)                                                              | -                                                        |
 
 Lecture
 
@@ -36,7 +37,7 @@ Lecture
 5. [X] Linguistic Structure: Dependency Parsing
 6. [X] The probability of a sentence? Recurrent Neural Networks and Language Models
 7. [X] Vanishing Gradients and Fancy RNNs
-8. [ ] Machine Translation, Seq2Seq and Attention
+8. [X] Machine Translation, Seq2Seq and Attention
 9. [ ] Practical Tips for Final Projects
 10. [ ] Question Answering and the Default Final Project
 11. [ ] ConvNets for NLP
@@ -218,6 +219,14 @@ Outline
   * [ ] [Neural Machine Translation by Jointly Learning to Align and Translate](CourseMaterials/readings/Neural_Machine_Translation_by_Jointly_Learning_to_Align_and_Translate.pdf) (original seq2seq+attention paper)
   * [ ] [**Attention and Augmented Recurrent Neural Networks**](https://distill.pub/2016/augmented-rnns/) (blog post overview)
   * [ ] [Massive Exploration of Neural Machine Translation Architectures](CourseMaterials/readings/Massive_Exploration_of_Neural_Machine_Translation_Architectures.pdf) (practical advice for hyperparameter choices)
+
+#### Lecture 14: Transformers and Self-Attention For Generative Models
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture14-transformers.pdf)
+* readings
+  * [ ] [Attention is all you need](CourseMaterials/readings/Transformer.pdf)
+  * [ ] [Image Transformer](CourseMaterials/readings/Image_Transformer.pdf)
+  * [ ] [Music Transformer: Generating music with long-term structure](CourseMaterials/readings/Music_Transformer.pdf)
 
 ### Assignments
 
