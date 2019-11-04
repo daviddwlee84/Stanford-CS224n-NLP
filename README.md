@@ -18,14 +18,14 @@ Course Related Links
 
 ## Schedule
 
-| Week             | Lectures                                                                                                                                                                                | Assignments                                          |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses)                                  | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
-| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)                                           | -                                                    |
-| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                                                             | [Assignment 2](#Assignment-2-word2vec)               |
-| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                          | -                                                    |
-| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                 | [Assignment 3](#Assignment-3-Dependency-Parsing)     |
-| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention) | -                                                    |
+| Week             | Lectures                                                                                                                                                                                | Assignments                                              |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses)                                  | [Assignment 1](#Assignment-1-Exploring-Word-Vectors)     |
+| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)                                           | -                                                        |
+| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                                                             | [Assignment 2](#Assignment-2-word2vec)                   |
+| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                          | -                                                        |
+| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                 | [Assignment 3](#Assignment-3-Dependency-Parsing)         |
+| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention) | [Assignment 4](#assignment-4-neural-machine-translation) |
 
 Lecture
 
@@ -264,3 +264,9 @@ Others' Answer
 Others' Answer
 
 * [CS224N-2019/Assignment/a3 at master · Luvata/CS224N-2019](https://github.com/Luvata/CS224N-2019/tree/master/Assignment/a3)
+
+#### Assignment 4: Neural Machine Translation
+
+* [handout](Assignments/a4/a4.pdf)
+* [Asure Guide](Assignments/AzureGuide.pdf) ([Google Drive](https://docs.google.com/document/d/1MHaQvbtPkfEGc93hxZpVhkKum1j_F1qsyJ4X0vktUDI/edit)), [Practical Guide to VMs](Assignments/PracticalVMTips.pdf) ([Google Drive](https://docs.google.com/document/d/1z9ST0IvxHQ3HXSAOmpcVbFU5zesMeTtAc9km6LAPJxk/edit))
+* [directory](Assignments/a4)
