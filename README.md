@@ -18,14 +18,14 @@ Course Related Links
 
 ## Schedule
 
-| Week             | Lectures                                                                                                                                               | Assignments                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses) | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
-| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)          | -                                                    |
-| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                            | [Assignment 2](#Assignment-2-word2vec)               |
-| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                         | -                                                    |
-| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                | [Assignment 3](#Assignment-3-Dependency-Parsing)     |
-| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns)                                                                    | -                                                    |
+| Week             | Lectures                                                                                                                                                                                | Assignments                                          |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses)                                  | [Assignment 1](#Assignment-1-Exploring-Word-Vectors) |
+| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)                                           | -                                                    |
+| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                                                             | [Assignment 2](#Assignment-2-word2vec)               |
+| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                          | -                                                    |
+| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                 | [Assignment 3](#Assignment-3-Dependency-Parsing)     |
+| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention) | -                                                    |
 
 Lecture
 
@@ -34,8 +34,8 @@ Lecture
 3. [X] Word Window Classification, Neural Networks, and Matrix Calculus
 4. [X] Backpropagation and Computation Graphs
 5. [X] Linguistic Structure: Dependency Parsing
-6. [ ] The probability of a sentence? Recurrent Neural Networks and Language Models
-7. [ ] Vanishing Gradients and Fancy RNNs
+6. [X] The probability of a sentence? Recurrent Neural Networks and Language Models
+7. [X] Vanishing Gradients and Fancy RNNs
 8. [ ] Machine Translation, Seq2Seq and Attention
 9. [ ] Practical Tips for Final Projects
 10. [ ] Question Answering and the Default Final Project
@@ -200,6 +200,24 @@ Outline
   * [ ] [On the difficulty of training Recurrent Neural Networks](CourseMaterials/readings/On_the_difficulty_of_training_Recurrent_Neural_Networks.pdf) (proof of vanishing gradient problem)
   * [ ] [Vanishing Gradients Jupyter Notebook](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1174/lectures/vanishing_grad_example.html) (demo for feedforward networks)
   * [X] [**Understanding LSTM Networks**](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) (blog post overview)
+
+> Vanishing gradient =>
+>
+> * LSTM and GRU
+
+#### Lecture 8: Machine Translation, Seq2Seq and Attention
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture08-nmt.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes06-NMT_seq2seq_attention.pdf)
+* readings
+  * [ ] [Statistical Machine Translation slides, CS224n 2015](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1162/syllabus.shtml) (lectures 2/3/4)
+  * [ ] [Statistical Machine Translation](https://www.cambridge.org/core/books/statistical-machine-translation/94EADF9F680558E13BE759997553CDE5) (book by Philipp Koehn)
+  * [ ] [BLEU (a Method for Automatic Evaluation of Machine Translate)](CourseMaterials/other/BLEU.pdf) (original paper)
+  * [ ] [Sequence to Sequence Learning with Neural Networks](CourseMaterials/readings/Sequence_to_Sequence_Learning_with_Neural_Networks.pdf) (original seq2seq NMT paper)
+  * [ ] [Sequence Transduction with Recurrent Neural Networks](CourseMaterials/readings/Sequence_Transduction_with_Recurrent_Neural_Networks.pdf) (early seq2seq speech recognition paper)
+  * [ ] [Neural Machine Translation by Jointly Learning to Align and Translate](CourseMaterials/readings/Neural_Machine_Translation_by_Jointly_Learning_to_Align_and_Translate.pdf) (original seq2seq+attention paper)
+  * [ ] [**Attention and Augmented Recurrent Neural Networks**](https://distill.pub/2016/augmented-rnns/) (blog post overview)
+  * [ ] [Massive Exploration of Neural Machine Translation Architectures](CourseMaterials/readings/Massive_Exploration_of_Neural_Machine_Translation_Architectures.pdf) (practical advice for hyperparameter choices)
 
 ### Assignments
 
