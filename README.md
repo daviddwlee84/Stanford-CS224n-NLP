@@ -60,6 +60,9 @@ Assignment
 3. [X] Dependency Parsing
    1. [X] code
    2. [X] written
+4. [ ] Nerual Machine Translation
+   1. [ ] code
+   2. [ ] written
 
 Paper reading
 
@@ -68,6 +71,7 @@ Paper reading
 * [ ] GloVe
 * [ ] improveing distrubutional similarity
 * [ ] embedding evaluation methods
+* [ ] Transformer
 
 Derivation
 
@@ -284,3 +288,4 @@ Others' Answer
       * `nltk.translate.bleu_score`
     * [Tilde Interactive BLEU score evaluator](https://www.letsmt.eu/Bleu.aspx) - input txt
   * [code](Assignments/a4/code)
+    * `python3 sanity_check.py 1d` check the correctness of encode procedure (including utils.pad_sents)
