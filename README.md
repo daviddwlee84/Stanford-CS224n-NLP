@@ -289,3 +289,4 @@ Others' Answer
     * [Tilde Interactive BLEU score evaluator](https://www.letsmt.eu/Bleu.aspx) - input txt
   * [code](Assignments/a4/code)
     * `python3 sanity_check.py 1d` check the correctness of encode procedure (including utils.pad_sents)
+    * `python3 sanity_check.py 1e` check the correctness of decode procedure (including step function)
