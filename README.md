@@ -279,5 +279,8 @@ Others' Answer
 * [handout](Assignments/a4/a4.pdf)
 * [Asure Guide](Assignments/AzureGuide.pdf) ([Google Drive](https://docs.google.com/document/d/1MHaQvbtPkfEGc93hxZpVhkKum1j_F1qsyJ4X0vktUDI/edit)), [Practical Guide to VMs](Assignments/PracticalVMTips.pdf) ([Google Drive](https://docs.google.com/document/d/1z9ST0IvxHQ3HXSAOmpcVbFU5zesMeTtAc9km6LAPJxk/edit))
 * [directory](Assignments/a4)
-  * [written](Assignments/a4/a4.pdf)
+  * [written](Assignments/a4/a4.pdf) - [BLEU Verify](Assignments/a4/written/BLEU_Verify.ipynb)
+    * [A Gentle Introduction to Calculating the BLEU Score for Text in Python](https://machinelearningmastery.com/calculate-bleu-score-for-text-python/)
+      * `nltk.translate.bleu_score`
+    * [Tilde Interactive BLEU score evaluator](https://www.letsmt.eu/Bleu.aspx) - input txt
   * [code](Assignments/a4/code)

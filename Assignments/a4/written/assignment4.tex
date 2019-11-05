@@ -11,8 +11,8 @@
   \href{#2}{#1}\footnote{\url{#2}}
 }
 
-% For resize box
-\usepackage{graphicx}
+% For adjust list spacing
+\usepackage{enumitem}
 
 % For custom title
 \usepackage{titlesec}
@@ -27,7 +27,7 @@
 \maketitle
 
 \section{Neural Machine Translation with RNNs}
-\subsection*{(g) First explain (in around three sentences) what effect the masks have on the entire attention com- putation. Then explain (in one or two sentences) why it is necessary to use the masks in this way.}
+\subsection*{(g) First explain (in around three sentences) what effect the masks have on the entire attention computation. Then explain (in one or two sentences) why it is necessary to use the masks in this way.}
 
 \section{Analyzing NMT Systems}
 \subsection{For each example of a Spanish source sentence, reference English translation, and NMT English translation}
@@ -36,16 +36,53 @@
 % 3. Describe one possible way we might alter the NMT system to fix the observed error.
 \subsubsection{\textbf{Reference Translation}: \textit{So another one of my favorites, “The Starry Night”.} \\ \textbf{NMT Translation}: \textit{Here’s another favorite of my favorites, “The Starry Night”.}}
 
+\begin{itemize}
+  \item Error: \textit{So another one} vs. \textit{Here’s another favorite}
+  \item Reason: NMT might use the "greedy decoding" since the \textit{favorites} is at the back of the sentence, but when it can't modified the generated \textit{favorite}.
+  \item Fix: Maybe use beam search (or exhaustive search) decoding will solve this problem.
+\end{itemize}
+
 \subsubsection{\textbf{Reference Translation}: \textit{You know, what I do is write for children, and I’m probably America’s most widely read children’s author, in fact.} \\ \textbf{NMT Translation}: \textit{You know what I do is write for children, and in fact, I’m probably the author for children, more reading in the U.S.}}
+
+\begin{itemize}
+  \item Error: \textit{and I’m probably America’s most widely read children’s author, in fact.} vs. \textit{and in fact, I’m probably the author for children, more reading in the U.S.}
+  \item Reason: I think it's because of the "long-term dependency", he has mentioned \textit{what I do is write for children} but the NMT repeated same express in a similar way: \textit{author for children}
+  \item Fix: Maybe use LSTM (GRU) or Attention to capture long-term dependencies
+\end{itemize}
 
 \subsubsection{\textbf{Reference Translation}: \textit{A friend of mine did that – Richard \underline{Bolingbroke}.} \\ \textbf{NMT Translation}: \textit{A friend of mine did that – Richard <unk>}}
 
-\subsubsection{\textbf{Reference Translation}: \textit{You’ve just got to go around the block to see it as an epiphany.} \\ \textbf{NMT Translation}: \textit{ou just have to go back to the apple to see it as a epiphany.}}
+\begin{itemize}
+  \item Error: The classic out-of-vocabulary (OOV) problem on the word \textit{Bolingbroke}.
+  \item Reason: Because this word didn't show up in the training data (or pre-trained embedding).
+  \item Fix: Maybe we can use "character-level" (smaller granularity) decoder to generate the output. (if we're not allow to modify the training data)
+\end{itemize}
+
+\subsubsection{\textbf{Reference Translation}: \textit{You’ve just got to go around the block to see it as an epiphany.} \\ \textbf{NMT Translation}: \textit{You just have to go back to the apple to see it as a epiphany.}}
+
+\begin{itemize}
+  \item Error: Grammar errors (e.g. \textit{have just got to go} vs. \textit{just have to go}, \textit{an epiphany} vs. \textit{a eiphany}) and some word choice error (e.g. \textit{around} vs. \textit{back to}, \textit{block} vs. \textit{apple})
+  \item Reason: I think it is because the lack of the training data (or epoches) that it still hasn't learned the correct grammar and word.
+  \item Fix: More training corpus and epoches.
+\end{itemize}
 
 \subsubsection{\textbf{Reference Translation}: \textit{She saved my life by letting me go to the bathroom in the teachers’ lounge.} \\ \textbf{NMT Translation}: \textit{She saved my life by letting me go to the bathroom in the women’s room.}}
 
+\begin{itemize}
+  \item Error: \textit{in the teachers’ lounge} vs. \textit{in the women’s room}
+  \item Reason: I think because the sentence begin with \textit{She} so in the training data the woman is more likely to be in the women's room than in teachers' lounge.
+  \item Fix: Fix the data bias in training data. Maybe use some data augmentation trick to make it possible for woman in any other places.
+\end{itemize}
+
 \subsubsection{\textbf{Reference Translation}: \textit{That’s more than 250 thousand acres.} \\ \textbf{NMT Translation}: \textit{That’s over 100,000 acres.}}
 
+\begin{itemize}
+  \item Error: 100,000 hecta'reas is equal to 250 thousand acres.
+  \item Reason: NMT don't know anything about unit conversion. e.g. NTD $\rightleftharpoons$ USD
+  \item Fix: Maybe nowaday we can only apply some rules on that like capture the units seperately and translate it individually.
+\end{itemize}
+
+%TODO part b
 \subsection{Please identify 2 different examples of errors that your model produced.}
 % 1. Write the source sentence in Spanish. The source sentences are in the en_es_data/test.es.
 % 2. Write the reference English translation. The reference translations are in the en_es_data/test.en.
@@ -57,16 +94,96 @@
 
 \subsection{Please consider this example:}
 
-\paragraph{Reference Translation $r_1$: love can always find a way Reference \\ Translation $r_2$: love makes anything possible \\
+\paragraph{Reference Translation $r_1$: love can always find a way \\
+Reference Translation $r_2$: love makes anything possible \\
 NMT Translation $c_1$: the love can always do \\
 NMT Translation $c_2$: love can make anything possible}
 
 \subsubsection{Compute the BLEU scores for $c_1$ and $c_2$. And answer which of the two NMT translations is considered the better translation according to the BLEU Score? Do you agree that it is the better translation?}
 
+\begin{itemize}[topsep=0pt, partopsep=0pt]
+  \item For $c_1$ {
+    \begin{itemize}
+      \item unigram: $p_1 = {\min(\max(3, 1), 5) \over 5} = 0.6$
+      \item bigram: $p_2 = {2 \over 4} = 0.5$
+    \end{itemize}
+  }
+  \item For $c_2$ {
+    \begin{itemize}
+      \item unigram: $p_1 = {4 \over 5} = 0.8$
+      \item bigram: $p_2 = {2 \over 4} = 0.5$
+    \end{itemize}
+  }
+\end{itemize}
+
+Because $c = 5$ is greater than $r^* = 4$ thus $BP = 1$
+
+$$
+BLEU_1 = BP \times \exp(0.5 \log 0.6 + 0.5 \log 0.5) = 0.5477225575051662
+$$
+
+$$
+BLEU_2 = BP \times \exp(0.5 \log 0.8 + 0.5 \log 0.5) = 0.6324555320336759
+$$
+
+The score of candidate sentence 2 $c_2$ is greater than candidate sentence 1 $c_1$.
+
+In my opinion, I think the sentence 2 is indeed better than sentence 1. Because it describe both of the meaning of references.
+
 \subsubsection{Recompute BLEU scores for $c_1$ and $c_2$, this time with respect to $r_1$ only. Which of the two NMT translations now receives the higher BLEU score? Do you agree that it is the better translation?}
+
+\begin{itemize}[topsep=0pt, partopsep=0pt]
+  \item For $c_1$ {
+    \begin{itemize}
+      \item unigram: $p_1 = {3 \over 5} = 0.6$
+      \item bigram: $p_2 = {2 \over 4} = 0.5$
+    \end{itemize}
+  }
+  \item For $c_2$ {
+    \begin{itemize}
+      \item unigram: $p_1 = {2 \over 5} = 0.4$
+      \item bigram: $p_2 = {1 \over 4} = 0.25$
+    \end{itemize}
+  }
+\end{itemize}
+
+Because $c = 5,\quad r^* = 6$ thus
+
+$$
+BP = \exp(1 - \frac{6}{5}) = 0.8187307530779819
+$$
+
+$$
+BLEU_1 = BP \times \exp(0.5 \log 0.6 + 0.5 \log 0.5) = 0.448437301984003
+$$
+
+$$
+BLEU_2 = BP \times \exp(0.5 \log 0.4 + 0.5 \log 0.25) = 0.25890539701513365
+$$
+
+The score of candidate sentence 1 $c_1$ is greater than candidate sentence 2 $c_2$ now.
+
+I'm not agree the sentence 1 is now better than sentence 2. In my opinion, I think it is because the lack of human labeling. A sentence should be able to express in many kind of ways especially in translation.
 
 \subsubsection{Please explain (in a few sentences) why "NMT systems are often evaluated with respect to only a single reference translation (due to data availability)" may be problematic.}
 
+As the last exercise shows, when we have only one single reference translation, then it will probably restrict the expression. Even if we have a better translation but it will end up receives lower score.
+
 \subsubsection{List two advantages and two disadvantages of BLEU, compared to human evaluation, as an evaluation metric for Machine Translation.}
+
+\begin{itemize}[topsep=0pt, partopsep=0pt]
+  \item Advantages {
+    \begin{itemize}
+      \item Make the evaluation quick, inexpensive, and absolutely objective.
+      \item Scoring become language-independent (just input references and candidates, and we don't have to care about what language we use)
+    \end{itemize}
+  }
+  \item Disadvantages {
+    \begin{itemize}
+      \item Scoring is not flexible. There should be plenty of solution but it only evaluate based on the given references.
+      \item Can't evaluate too advanced translation. Because BLUE is comparison-based evaulation, it can't capture synonymous or similar phrase. Additionally, some more abstract metrics like adequacy, fidelity and fluency is even harder to scoring. (Even if evaluate by human may have different opinions.)
+    \end{itemize}
+  }
+\end{itemize}
 
 \end{document}
