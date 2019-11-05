@@ -279,3 +279,5 @@ Others' Answer
 * [handout](Assignments/a4/a4.pdf)
 * [Asure Guide](Assignments/AzureGuide.pdf) ([Google Drive](https://docs.google.com/document/d/1MHaQvbtPkfEGc93hxZpVhkKum1j_F1qsyJ4X0vktUDI/edit)), [Practical Guide to VMs](Assignments/PracticalVMTips.pdf) ([Google Drive](https://docs.google.com/document/d/1z9ST0IvxHQ3HXSAOmpcVbFU5zesMeTtAc9km6LAPJxk/edit))
 * [directory](Assignments/a4)
+  * [written](Assignments/a4/a4.pdf)
+  * [code](Assignments/a4/code)

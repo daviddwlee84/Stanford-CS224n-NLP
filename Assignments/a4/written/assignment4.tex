@@ -1,0 +1,72 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+% Undefined control sequence.
+% <argument> \exp \left \boldsymbol
+
+% For url in footnote, hyperlinks and bookmarks
+\usepackage{hyperref}
+\newcommand{\fnurl}[2]{
+  \href{#2}{#1}\footnote{\url{#2}}
+}
+
+% For resize box
+\usepackage{graphicx}
+
+% For custom title
+\usepackage{titlesec}
+\titleformat{\section}{\bf\large}{\thesection.~}{1em}{}
+\titleformat{\subsection}{\bf}{(\alph{subsection})~}{0pt}{}
+\titleformat{\subsubsection}{}{\roman{subsubsection}.~}{0em}{}
+
+\title{CS224n Assignment 4: \\ Neural Machine Translation}
+\author{David Lee}
+
+\begin{document}
+\maketitle
+
+\section{Neural Machine Translation with RNNs}
+\subsection*{(g) First explain (in around three sentences) what effect the masks have on the entire attention com- putation. Then explain (in one or two sentences) why it is necessary to use the masks in this way.}
+
+\section{Analyzing NMT Systems}
+\subsection{For each example of a Spanish source sentence, reference English translation, and NMT English translation}
+% 1. Identify the error in the NMT translation.
+% 2. Provide a reason why the model may have made the error (either due to a specific linguistic construct or specific model limitations).
+% 3. Describe one possible way we might alter the NMT system to fix the observed error.
+\subsubsection{\textbf{Reference Translation}: \textit{So another one of my favorites, “The Starry Night”.} \\ \textbf{NMT Translation}: \textit{Here’s another favorite of my favorites, “The Starry Night”.}}
+
+\subsubsection{\textbf{Reference Translation}: \textit{You know, what I do is write for children, and I’m probably America’s most widely read children’s author, in fact.} \\ \textbf{NMT Translation}: \textit{You know what I do is write for children, and in fact, I’m probably the author for children, more reading in the U.S.}}
+
+\subsubsection{\textbf{Reference Translation}: \textit{A friend of mine did that – Richard \underline{Bolingbroke}.} \\ \textbf{NMT Translation}: \textit{A friend of mine did that – Richard <unk>}}
+
+\subsubsection{\textbf{Reference Translation}: \textit{You’ve just got to go around the block to see it as an epiphany.} \\ \textbf{NMT Translation}: \textit{ou just have to go back to the apple to see it as a epiphany.}}
+
+\subsubsection{\textbf{Reference Translation}: \textit{She saved my life by letting me go to the bathroom in the teachers’ lounge.} \\ \textbf{NMT Translation}: \textit{She saved my life by letting me go to the bathroom in the women’s room.}}
+
+\subsubsection{\textbf{Reference Translation}: \textit{That’s more than 250 thousand acres.} \\ \textbf{NMT Translation}: \textit{That’s over 100,000 acres.}}
+
+\subsection{Please identify 2 different examples of errors that your model produced.}
+% 1. Write the source sentence in Spanish. The source sentences are in the en_es_data/test.es.
+% 2. Write the reference English translation. The reference translations are in the en_es_data/test.en.
+% 3. Write your NMT model’s English translation. The model-translated sentences are in the outputs/test outputs.txt.
+% 4. Identify the error in the NMT translation.
+% 5. Provide a reason why the model may have made the error (either due to a specific linguistic
+% construct or specific model limitations).
+% 6. Describe one possible way we might alter the NMT system to fix the observed error.
+
+\subsection{Please consider this example:}
+
+\paragraph{Reference Translation $r_1$: love can always find a way Reference \\ Translation $r_2$: love makes anything possible \\
+NMT Translation $c_1$: the love can always do \\
+NMT Translation $c_2$: love can make anything possible}
+
+\subsubsection{Compute the BLEU scores for $c_1$ and $c_2$. And answer which of the two NMT translations is considered the better translation according to the BLEU Score? Do you agree that it is the better translation?}
+
+\subsubsection{Recompute BLEU scores for $c_1$ and $c_2$, this time with respect to $r_1$ only. Which of the two NMT translations now receives the higher BLEU score? Do you agree that it is the better translation?}
+
+\subsubsection{Please explain (in a few sentences) why "NMT systems are often evaluated with respect to only a single reference translation (due to data availability)" may be problematic.}
+
+\subsubsection{List two advantages and two disadvantages of BLEU, compared to human evaluation, as an evaluation metric for Machine Translation.}
+
+\end{document}
