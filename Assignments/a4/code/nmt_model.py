@@ -319,13 +319,14 @@ class NMT(nn.Module):
         dec_state = self.decoder(Ybar_t, dec_state)
         dec_hidden, dec_cell = dec_state
         # (b, src_len, h) x (b, h, 1) = (batch, src_len, 1) => (batch, src_len)
-        e_t = torch.bmm(enc_hiddens_proj.unsqueeze(-1), dec_hidden).squeeze(-1)
+        e_t = torch.bmm(enc_hiddens_proj, dec_hidden.unsqueeze(-1)).squeeze(-1)
 
         ### END YOUR CODE
 
         # Set e_t to -inf where enc_masks has 1
         if enc_masks is not None:
-            e_t.data.masked_fill_(enc_masks.byte(), -float('inf'))
+            # e_t.data.masked_fill_(enc_masks.byte(), -float('inf')) # dtype torch.uint8 (.byte()) deprecated
+            e_t.data.masked_fill_(enc_masks.bool(), -float('inf'))
 
         ### YOUR CODE HERE (~6 Lines)
         ### TODO:
@@ -355,11 +356,11 @@ class NMT(nn.Module):
         ###     Tanh:
         ###         https://pytorch.org/docs/stable/torch.html#torch.tanh
 
-        alpha_t = torch.softmax(e_t)
+        alpha_t = torch.softmax(e_t, dim=1)
         # (b, 1, src_len) x (b, src_len, 2h) = (batch, 1, 2h) => (batch, 2h)
         a_t = torch.bmm(alpha_t.unsqueeze(1), enc_hiddens).squeeze(1)
-        U_t = torch.cat(a_t, dec_hidden, dim=1) # (b, 3h)
-        V_t = self.combined_output_projection(u_t) # (b, h)
+        U_t = torch.cat((a_t, dec_hidden), dim=1) # (b, 3h)
+        V_t = self.combined_output_projection(U_t) # (b, h)
         O_t = self.dropout(torch.tanh(V_t))
 
         ### END YOUR CODE
