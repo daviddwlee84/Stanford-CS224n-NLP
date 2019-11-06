@@ -63,6 +63,9 @@ Assignment
 4. [X] Nerual Machine Translation
    1. [X] code
    2. [X] written
+5. [ ] Character-based Neural Machine Translation
+   1. [ ] code
+   2. [ ] written
 
 Project
 
@@ -303,6 +306,11 @@ Others' Answer
       * early stop on `epoch 13, iter 86000, cum. loss 28.94, cum. ppl 5.13 cum. examples 64000` => **Corpus BLEU: 22.36579929869114**
     * Compare output with references `vim -dO outputs/test_outputs.txt en_es_data/test.en`
     * Open three of them at the same time `vim -o outputs/test_outputs.txt en_es_data/test.en en_es_data/test.es`
+
+#### Assignment 5: Character-based Neural Machine Translation
+
+* [handout](Assignments/a5_public/a5.pdf)
+* [directory](Assignments/a5_public)
 
 ### Projects
 
