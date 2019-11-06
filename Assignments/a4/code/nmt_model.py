@@ -78,8 +78,8 @@ class NMT(nn.Module):
         self.h_projection = nn.Linear(2*hidden_size, hidden_size, bias=False)
         self.c_projection = nn.Linear(2*hidden_size, hidden_size, bias=False)
         self.att_projection = nn.Linear(2*hidden_size, hidden_size, bias=False)
-        self.combined_output_projection = nn.Linear(3*hidden_size, hidden_size)
-        self.target_vocab_projection = nn.Linear(hidden_size, len(vocab.tgt))
+        self.combined_output_projection = nn.Linear(3*hidden_size, hidden_size, bias=False)
+        self.target_vocab_projection = nn.Linear(hidden_size, len(vocab.tgt), bias=False)
         self.dropout = nn.Dropout(p=dropout_rate)
 
         ### END YOUR CODE
@@ -172,9 +172,9 @@ class NMT(nn.Module):
         ###         https://pytorch.org/docs/stable/tensors.html#torch.Tensor.permute
 
         X = self.model_embeddings.source(source_padded) # (src_len, batch, embed)
-        X_packed = nn.utils.rnn.pack_padded_sequence(X, source_lengths, batch_first=False)
+        X_packed = pack_padded_sequence(X, source_lengths, batch_first=False)
         X_encoded, (last_hidden, last_cell) = self.encoder(X_packed) # (src_len, batch, h*2), (2, batch, h), (2, batch, h)
-        enc_hiddens, _ = nn.utils.rnn.pad_packed_sequence(X_encoded, batch_first=False) # inverse operation to pack_padded_sequence
+        enc_hiddens, _ = pad_packed_sequence(X_encoded, batch_first=False) # inverse operation to pack_padded_sequence
         enc_hiddens = enc_hiddens.permute(1, 0, 2) # (batch, src_len, h*2)
 
         init_decoder_hidden = self.h_projection(torch.cat((last_hidden[0], last_hidden[1]), dim=1))
@@ -255,9 +255,10 @@ class NMT(nn.Module):
         for Y_t in Y.split(1, dim=0): # (1, batch, embed)
             Y_t = Y_t.squeeze(0) # (batch, embed) (all the dimensions of input of size 1 removed)
             Ybar_t = torch.cat((Y_t, o_prev), dim=1) # (batch, embed + h)
-            dec_state, combined_output, _ = self.step(Ybar_t, dec_state, enc_hiddens, enc_hiddens_proj, enc_masks)
-            combined_outputs.append(combined_output)
-        combined_outputs = torch.stack(combined_outputs)
+            dec_state, o_t, _ = self.step(Ybar_t, dec_state, enc_hiddens, enc_hiddens_proj, enc_masks)
+            combined_outputs.append(o_t)
+            o_prev = o_t
+        combined_outputs = torch.stack(combined_outputs, dim=0)
 
         ### END YOUR CODE
 
@@ -358,7 +359,7 @@ class NMT(nn.Module):
 
         alpha_t = torch.softmax(e_t, dim=1)
         # (b, 1, src_len) x (b, src_len, 2h) = (batch, 1, 2h) => (batch, 2h)
-        a_t = torch.bmm(alpha_t.unsqueeze(1), enc_hiddens).squeeze(1)
+        a_t = torch.bmm(alpha_t.view((alpha_t.size(0), 1, alpha_t.size(1))), enc_hiddens).squeeze(1)
         U_t = torch.cat((a_t, dec_hidden), dim=1) # (b, 3h)
         V_t = self.combined_output_projection(U_t) # (b, h)
         O_t = self.dropout(torch.tanh(V_t))
