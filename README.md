@@ -64,6 +64,10 @@ Assignment
    1. [X] code
    2. [X] written
 
+Project
+
+1. [ ] Question Answering (Default)
+
 Paper reading
 
 * [ ] word2vec
@@ -299,3 +303,19 @@ Others' Answer
       * early stop on `epoch 13, iter 86000, cum. loss 28.94, cum. ppl 5.13 cum. examples 64000` => **Corpus BLEU: 22.36579929869114**
     * Compare output with references `vim -dO outputs/test_outputs.txt en_es_data/test.en`
     * Open three of them at the same time `vim -o outputs/test_outputs.txt en_es_data/test.en en_es_data/test.es`
+
+### Projects
+
+* [Project Proposal](Projects/project-proposal-instructions.pdf)
+* [Milestone Instruction](Projects/project-milestone-instructions.pdf)
+* [Project Report](Projects/project-report-instructions.pdf)
+* [Project Poster/Video](Projects/project-postervideo-instructions.pdf)
+
+#### Question Answering on SQuAD
+
+> Default final project
+>
+> * [handout](Projects/QuestionAnswering/default-final-project-handout.pdf)
+> * [starter code](https://github.com/chrischute/squad)
+
+* [directory](Projects/QuestionAnswering)
