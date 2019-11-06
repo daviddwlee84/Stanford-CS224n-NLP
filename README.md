@@ -290,3 +290,6 @@ Others' Answer
   * [code](Assignments/a4/code)
     * `python3 sanity_check.py 1d` check the correctness of encode procedure (including utils.pad_sents)
     * `python3 sanity_check.py 1e` check the correctness of decode procedure (including step function)
+    * Preprocess the training data by `sh run.sh vocab` to get the necessary vocabulary
+    * Test the functionality on CPU: train `sh run.sh train_local`; test `sh run.sh test_local`
+    * Train and Test with GPU: train `sh run.sh train`; test `sh run.sh test`
