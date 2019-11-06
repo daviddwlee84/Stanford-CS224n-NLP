@@ -24,6 +24,13 @@
 % https://tex.stackexchange.com/questions/2369/why-do-the-less-than-symbol-and-the-greater-than-symbol-appear-wrong-as
 \usepackage[T1]{fontenc}
 
+% For quote style
+% https://tex.stackexchange.com/questions/325695/how-to-style-blockquote
+\usepackage{etoolbox}
+\usepackage{setspace}
+\AtBeginEnvironment{quote}{\singlespace\vspace{-\topsep}\small}
+\AtEndEnvironment{quote}{\vspace{-\topsep}\endsinglespace}
+
 \title{CS224n Assignment 4: \\ Neural Machine Translation}
 \author{David Lee}
 
@@ -133,9 +140,15 @@ This is necessary because paddings are not original data, they were added for ma
 
 The error is obvious that the NMT keep generate a sentence loop \textit{because it was necessary}. And I think it finally stop because reach the maximum length of the beam search.
 
-I think this error happended because this sentence (hypothesis) really have a high score (probability). And another reason may caused by that this sentence is not end with period but comma instead.
+I think the loop is because when decoding, the NMT model only looked at the previous few words.
 
-Maybe add more English references will ease the problem. Or input a more completed sentence (end with period).
+Maybe use self-attention on decoder so it can capture the relation depends on the more previous itself.
+
+\begin{quote}
+(I think this error happended because this sentence (hypothesis) really have a high score (probability). And another reason may caused by that this sentence is not end with period but comma instead.
+
+Maybe add more English references will ease the problem. Or input a more completed sentence (end with period).)
+\end{quote}
 
 \bigskip
 
