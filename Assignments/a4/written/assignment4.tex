@@ -20,6 +20,10 @@
 \titleformat{\subsection}{\bf}{(\alph{subsection})~}{0pt}{}
 \titleformat{\subsubsection}{}{\roman{subsubsection}.~}{0em}{}
 
+% Make < and > literarily
+% https://tex.stackexchange.com/questions/2369/why-do-the-less-than-symbol-and-the-greater-than-symbol-appear-wrong-as
+\usepackage[T1]{fontenc}
+
 \title{CS224n Assignment 4: \\ Neural Machine Translation}
 \author{David Lee}
 
@@ -28,6 +32,33 @@
 
 \section{Neural Machine Translation with RNNs}
 \subsection*{(g) First explain (in around three sentences) what effect the masks have on the entire attention computation. Then explain (in one or two sentences) why it is necessary to use the masks in this way.}
+
+We generate masks by each sentence length and pass it to decode procedure. In the step function, after we calculate the attention scores $e_t$ then we masks out the data with 1s (i.e. the paddings) and fill with negative infinity. When we pass $e_t$ through softmax to get $\alpha_t$, because the $\exp(-\infty) = 0$ (we will get zero probability on those positions), that means we ignore the paddings' attention.
+
+This is necessary because paddings are not original data, they were added for making the batch data equal length. But it doesn't make sense that the encoding information to attend on a non-existed word. So I think it's necessary.
+
+\subsection*{(j) Please provide one possible advantage and disadvantage of each attention mechanism, with respect to either of the other two attention mechanisms.}
+
+\begin{itemize}
+  \item Basic dot-product attention {
+    \begin{itemize}
+      \item Advantage: Simple and don't need additional weights (space-efficient) with respect to the other two attention mechanisms.
+      \item Disadvantage: Limitation of that query and values must have same dimension.
+    \end{itemize}
+  }
+  \item Multiplicative attention {
+    \begin{itemize}
+      \item Advantage: A weight metrix $W$ can transform the shape of query to match values. And $W$ can be used for visualization.
+      \item Disadvantage: Additional storage of the weight matrix $W$ with respect to the basic dot-product attention.
+    \end{itemize}
+  }
+  \item Additive attention {
+    \begin{itemize}
+      \item Advantage: This mechanism is more likely to one layer feed-forward network with $\tanh$ as non-linearity. This should tune weight matrices way more better and have better performance in higher dimensions with respect to the multiplicative attention.
+      \item Disadvantage: Heavier complexity with respect to the other two attention mechanisms.
+    \end{itemize}
+  }
+\end{itemize}
 
 \section{Analyzing NMT Systems}
 \subsection{For each example of a Spanish source sentence, reference English translation, and NMT English translation}
@@ -88,12 +119,42 @@
 % 2. Write the reference English translation. The reference translations are in the en_es_data/test.en.
 % 3. Write your NMT model’s English translation. The model-translated sentences are in the outputs/test outputs.txt.
 % 4. Identify the error in the NMT translation.
-% 5. Provide a reason why the model may have made the error (either due to a specific linguistic
-% construct or specific model limitations).
+% 5. Provide a reason why the model may have made the error (either due to a specific linguistic construct or specific model limitations).
 % 6. Describe one possible way we might alter the NMT system to fix the observed error.
 
-\subsection{Please consider this example:}
+(line 23)
 
+\begin{itemize}
+  \item Source sentence in Spanish: \textit{Le encontramos un lugar, la internamos, y la cuidamos y nos encargamos de su familia, porque era necesario,}
+  \item Reference English translation: \textit{We found her one, we got her there,  and we took care of her  and watched over her family,  because it was necessary.}
+  \item NMT model's English translation: \textit{We found a place, the <unk> and the <unk> and we took away from her family, because I was necessary, because it was necessary, because it was necessary, because it was necessary, because it was necessary, because it was necessary, because it was necessary, because I was necessary, because it was necessary, because I was necessary, because it was necessary, because I was necessary, because it was necessary, because it}
+  \item (Google Translate): \textit{We found her a place, we put her in, and we took care of her and we took care of her family, because it was necessary,}
+\end{itemize}
+
+The error is obvious that the NMT keep generate a sentence loop \textit{because it was necessary}. And I think it finally stop because reach the maximum length of the beam search.
+
+I think this error happended because this sentence (hypothesis) really have a high score (probability). And another reason may caused by that this sentence is not end with period but comma instead.
+
+Maybe add more English references will ease the problem. Or input a more completed sentence (end with period).
+
+\bigskip
+
+\noindent(line 147)
+
+\begin{itemize}
+  \item Source sentence in Spanish: \textit{Es por lo que ocurri en 1776 con los Padres Fundadores.}
+  \item Reference English translation: \textit{It's because of what happened in 1776  with the Founding Fathers.}
+  \item NMT model's English translation: \textit{It's what happened in <unk> with Parents <unk>}
+  \item (Google Translate): \textit{That is what happened in 1776 with the Founding Fathers.}
+\end{itemize}
+
+The error is the NMT model thought that \textit{Fundadores} is the actual \textit{father} so it use the word \textit{parents}. And it didn't even recognize 1776 that does surprise me.
+
+I'm not sure if this is because of we lower the text at the input or what. And the number I think it's because the NMT model treat the numbers as word, too.
+
+For the first one, I think we need some kinds of named-entity recognition technique that can distinguish a word is representing its literal meaning or just the word itself. And the numbers I think it can be solved by using character-based embedding (or have word segmentation between all numbers) to avoid the OOV problem.
+
+\subsection{Please consider this example:}
 \paragraph{Reference Translation $r_1$: love can always find a way \\
 Reference Translation $r_2$: love makes anything possible \\
 NMT Translation $c_1$: the love can always do \\

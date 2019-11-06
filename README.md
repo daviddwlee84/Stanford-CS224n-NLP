@@ -10,7 +10,7 @@ Course Related Links
 * [Lecture Videos](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
 * [Course contents backup](https://github.com/zhanlaoban/CS224N-Stanford-Winter-2019)
 * Others' answer
-  * [Luvata/CS224N-2019: My completed implementation solutions for CS224N 2019](https://github.com/Luvata/CS224N-2019)
+  * [Luvata/CS224N-2019](https://github.com/Luvata/CS224N-2019) (Almost finish all the written part as well)
   * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
   * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
   * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
@@ -60,9 +60,9 @@ Assignment
 3. [X] Dependency Parsing
    1. [X] code
    2. [X] written
-4. [ ] Nerual Machine Translation
-   1. [ ] code
-   2. [ ] written
+4. [X] Nerual Machine Translation
+   1. [X] code
+   2. [X] written
 
 Paper reading
 
@@ -292,4 +292,10 @@ Others' Answer
     * `python3 sanity_check.py 1e` check the correctness of decode procedure (including step function)
     * Preprocess the training data by `sh run.sh vocab` to get the necessary vocabulary
     * Test the functionality on CPU: train `sh run.sh train_local`; test `sh run.sh test_local`
+      * (speed about 100 words/sec on Macbook Air 1.8GHz i5 CPU)
     * Train and Test with GPU: train `sh run.sh train`; test `sh run.sh test`
+      * (speed about 5000 words/sec on Nvidia GeForce GTX 1080 GPU)
+      * (this will generate model image `model.bin` and optimizers' state `model.bin.optim`)
+      * early stop on `epoch 13, iter 86000, cum. loss 28.94, cum. ppl 5.13 cum. examples 64000` => **Corpus BLEU: 22.36579929869114**
+    * Compare output with references `vim -dO outputs/test_outputs.txt en_es_data/test.en`
+    * Open three of them at the same time `vim -o outputs/test_outputs.txt en_es_data/test.en en_es_data/test.es`
