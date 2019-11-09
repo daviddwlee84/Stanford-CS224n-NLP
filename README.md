@@ -8,25 +8,18 @@ Course Related Links
 
 * [CS224n: Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)
 * [Lecture Videos](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
-* [Course contents backup](https://github.com/zhanlaoban/CS224N-Stanford-Winter-2019)
-* Others' answer
-  * [Luvata/CS224N-2019](https://github.com/Luvata/CS224N-2019) (Almost finish all the written part as well)
-  * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
-  * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
-  * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
-  * [ZeyadZanaty/cs224n-assignments](https://github.com/ZeyadZanaty/cs224n-assignments) (just coding part assignment 2, 3)
 
 ## Schedule
 
-| Week             | Lectures                                                                                                                                                                                | Assignments                                              |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses)                                  | [Assignment 1](#Assignment-1-Exploring-Word-Vectors)     |
-| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)                                           | -                                                        |
-| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                                                             | [Assignment 2](#Assignment-2-word2vec)                   |
-| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                          | -                                                        |
-| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                 | [Assignment 3](#Assignment-3-Dependency-Parsing)         |
-| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention) | [Assignment 4](#assignment-4-neural-machine-translation) |
-| 2019/11/11~11/16 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models)                                                              | -                                                        |
+| Week             | Lectures                                                                                                                                                                                                                                                                            | Assignments                                              |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses)                                                                                                                              | [Assignment 1](#Assignment-1-Exploring-Word-Vectors)     |
+| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)                                                                                                                                       | -                                                        |
+| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                                                                                                                                                         | [Assignment 2](#Assignment-2-word2vec)                   |
+| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                                                                                                                      | -                                                        |
+| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                                                                                                             | [Assignment 3](#Assignment-3-Dependency-Parsing)         |
+| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention)                                                                                             | [Assignment 4](#assignment-4-neural-machine-translation) |
+| 2019/11/11~11/16 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models), [Modeling contexts of use: Contextual Representations and Pretraining](#lecture-13-modeling-contexts-of-use-contextual-representations-and-pretraining) | -                                                        |
 
 Lecture
 
@@ -38,16 +31,16 @@ Lecture
 6. [X] The probability of a sentence? Recurrent Neural Networks and Language Models
 7. [X] Vanishing Gradients and Fancy RNNs
 8. [X] Machine Translation, Seq2Seq and Attention
-9. [ ] Practical Tips for Final Projects
-10. [ ] Question Answering and the Default Final Project
+9. [ ] Practical Tips for Final Projects - Default Final Project
+10. [ ] Question Answering and the Default Final Project - Default Final Project
 11. [ ] ConvNets for NLP
-12. [ ] Information from parts of words: Subword Models
-13. [ ] Modeling contexts of use: Contextual Representations and Pretraining
-14. [ ] Transformers and Self-Attention For Generative Models
-15. [ ] Natural Language Generation
+12. [ ] Information from parts of words: Subword Models - Assignment 5
+13. [ ] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
+14. [X] Transformers and Self-Attention For Generative Models - Self-attention, Transformer
+15. [ ] Natural Language Generation - TODO
 16. [ ] Reference in Language and Coreference Resolution
-17. [ ] Multitask Learning: A general model for NLP?
-18. [ ] Constituency Parsing and Tree Recursive Neural Networks
+17. [ ] Multitask Learning: A general model for NLP? - TODO
+18. [ ] Constituency Parsing and Tree Recursive Neural Networks - TODO
 19. [ ] Safety, Bias, and Fairness
 20. [ ] Future of NLP + Deep Learning
 
@@ -231,13 +224,26 @@ Outline
   * [ ] [**Attention and Augmented Recurrent Neural Networks**](https://distill.pub/2016/augmented-rnns/) (blog post overview)
   * [ ] [Massive Exploration of Neural Machine Translation Architectures](CourseMaterials/readings/Massive_Exploration_of_Neural_Machine_Translation_Architectures.pdf) (practical advice for hyperparameter choices)
 
+#### Lecture 13: Modeling contexts of use: Contextual Representations and Pretraining
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture13-contextual-representations.pdf)
+* readings
+  * [**The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)**](https://jalammar.github.io/illustrated-bert/)
+  * [Contextual Word Representations: A Contextual Introduction](CourseMaterials/readings/Contextual_Word_Representations-A_Contextual_Introduction.pdf)
+
+> ELMo, BERT
+
 #### Lecture 14: Transformers and Self-Attention For Generative Models
+
+> guest lecture
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture14-transformers.pdf)
 * readings
   * [ ] [Attention is all you need](CourseMaterials/readings/Transformer.pdf)
   * [ ] [Image Transformer](CourseMaterials/readings/Image_Transformer.pdf)
   * [ ] [Music Transformer: Generating music with long-term structure](CourseMaterials/readings/Music_Transformer.pdf)
+
+> Self-attention, Transformer
 
 ### Assignments
 
@@ -327,3 +333,13 @@ Others' Answer
 > * [starter code](https://github.com/chrischute/squad)
 
 * [directory](Projects/QuestionAnswering)
+
+---
+
+* [Course contents backup](https://github.com/zhanlaoban/CS224N-Stanford-Winter-2019)
+* Others' answer
+  * [Luvata/CS224N-2019](https://github.com/Luvata/CS224N-2019) (almost finish all the written part as well)
+  * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
+  * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
+  * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
+  * [ZeyadZanaty/cs224n-assignments](https://github.com/ZeyadZanaty/cs224n-assignments) (just coding part assignment 2, 3)
