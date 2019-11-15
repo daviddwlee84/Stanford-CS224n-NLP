@@ -19,7 +19,8 @@ Course Related Links
 | 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                                                                                                                      | -                                                        |
 | 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                                                                                                             | [Assignment 3](#Assignment-3-Dependency-Parsing)         |
 | 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention)                                                                                             | [Assignment 4](#assignment-4-neural-machine-translation) |
-| 2019/11/11~11/16 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models), [Modeling contexts of use: Contextual Representations and Pretraining](#lecture-13-modeling-contexts-of-use-contextual-representations-and-pretraining) | -                                                        |
+| 2019/11/11~11/17 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models), [Modeling contexts of use: Contextual Representations and Pretraining](#lecture-13-modeling-contexts-of-use-contextual-representations-and-pretraining) | -                                                        |
+| 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects)                                                                                                                                                                                                         | -                                                        |
 
 Lecture
 
@@ -35,7 +36,7 @@ Lecture
 10. [ ] Question Answering and the Default Final Project - Default Final Project
 11. [ ] ConvNets for NLP
 12. [ ] Information from parts of words: Subword Models - Assignment 5
-13. [ ] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
+13. [X] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
 14. [X] Transformers and Self-Attention For Generative Models - Self-attention, Transformer
 15. [ ] Natural Language Generation - TODO
 16. [ ] Reference in Language and Coreference Resolution
@@ -240,10 +241,19 @@ Outline
 * [slides](CourseMaterials/slides/cs224n-2019-lecture14-transformers.pdf)
 * readings
   * [ ] [Attention is all you need](CourseMaterials/readings/Transformer.pdf)
+    * [ ] [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html)
+      * [github](http://github.com/harvardnlp/annotated-transformer)
   * [ ] [Image Transformer](CourseMaterials/readings/Image_Transformer.pdf)
   * [ ] [Music Transformer: Generating music with long-term structure](CourseMaterials/readings/Music_Transformer.pdf)
 
 > Self-attention, Transformer
+
+#### Lecture 9: Practical Tips for Final Projects
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture09-final-projects.pdf)
+* [notes](Projects/final-project-practical-tips.pdf) - Good notes about finding existing research, datasets and tasks
+* readings
+  * [ ] [Practical Methodology](https://www.deeplearningbook.org/contents/guidelines.html) (Deep Learning book chapter)
 
 ### Assignments
 
@@ -313,6 +323,10 @@ Others' Answer
     * Compare output with references `vim -dO outputs/test_outputs.txt en_es_data/test.en`
     * Open three of them at the same time `vim -o outputs/test_outputs.txt en_es_data/test.en en_es_data/test.es`
 
+Other's Answer
+
+* [pcyin/pytorch_nmt: A neural machine translation model in PyTorch](https://github.com/pcyin/pytorch_nmt)
+
 #### Assignment 5: Character-based Neural Machine Translation
 
 * [handout](Assignments/a5_public/a5.pdf)
@@ -339,7 +353,8 @@ Others' Answer
 * [Course contents backup](https://github.com/zhanlaoban/CS224N-Stanford-Winter-2019)
 * Others' answer
   * [Luvata/CS224N-2019](https://github.com/Luvata/CS224N-2019) (almost finish all the written part as well)
-  * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
   * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
+  * [youngmihuang/cs224n_exercise](https://github.com/youngmihuang/cs224n_exercise) ) (only 2019 a1~a4 coding part)
+  * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
   * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
   * [ZeyadZanaty/cs224n-assignments](https://github.com/ZeyadZanaty/cs224n-assignments) (just coding part assignment 2, 3)
