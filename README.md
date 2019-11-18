@@ -20,7 +20,7 @@ Course Related Links
 | 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                                                                                                             | [Assignment 3](#Assignment-3-Dependency-Parsing)         |
 | 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention)                                                                                             | [Assignment 4](#assignment-4-neural-machine-translation) |
 | 2019/11/11~11/17 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models), [Modeling contexts of use: Contextual Representations and Pretraining](#lecture-13-modeling-contexts-of-use-contextual-representations-and-pretraining) | -                                                        |
-| 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects)                                                                                                                                                                                                         | -                                                        |
+| 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects), [Question Answering](#lecture-10-question-answering-and-the-default-final-project)                                                                                                                     | -                                                        |
 
 Lecture
 
@@ -255,6 +255,13 @@ Outline
 * readings
   * [ ] [Practical Methodology](https://www.deeplearningbook.org/contents/guidelines.html) (Deep Learning book chapter)
 
+> Vanishing Gradient, LSTM, GRU (again)
+
+#### Lecture 10: Question Answering and the Default Final Project
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture10-QA.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes07-QA.pdf)
+
 ### Assignments
 
 #### Assignment 1: Exploring Word Vectors
@@ -347,6 +354,19 @@ Other's Answer
 > * [starter code](https://github.com/chrischute/squad)
 
 * [directory](Projects/QuestionAnswering)
+
+#### Summerization
+
+* Dataset
+  * [Cornell Newsroom Summarization Dataset](https://summari.es/)
+* Metrics
+  * Rouge (Recall-Oriented Understudy for Gisting Evaluation)
+  * with small scale human eval
+* Baseline
+  * Simplest model
+    * Logistic Regression on unigrams and bigrams
+    * Averaging word vectors
+  * Lede-3 baseline
 
 ---
 
