@@ -32,8 +32,8 @@ Lecture
 6. [X] The probability of a sentence? Recurrent Neural Networks and Language Models
 7. [X] Vanishing Gradients and Fancy RNNs
 8. [X] Machine Translation, Seq2Seq and Attention
-9. [ ] Practical Tips for Final Projects - Default Final Project
-10. [ ] Question Answering and the Default Final Project - Default Final Project
+9. [X] Practical Tips for Final Projects - Default Final Project
+10. [X] Question Answering and the Default Final Project - Default Final Project
 11. [ ] ConvNets for NLP
 12. [ ] Information from parts of words: Subword Models - Assignment 5
 13. [X] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
@@ -262,6 +262,32 @@ Outline
 * [slides](CourseMaterials/slides/cs224n-2019-lecture10-QA.pdf)
 * [notes](CourseMaterials/notes/cs224n-2019-notes07-QA.pdf)
 
+> some more Attention, mentioned [CS 276: Information Retrieval and Web Search](http://web.stanford.edu/class/cs276/)
+
+Quick notes about QA:
+
+* QA types
+  * Factoid QA: answer is an **NER** (some clear semantic type entity)
+  * Extractive QA: answer must be a **span** (a sub-sequence of words) in the passage
+    * e.g. SQuAD 1.X
+    * defect: all questions have an answer in the paragraph => turned into a kind of a ranking task
+  * Extractive QA + NoAnswer: some question might have no answer in the paragraph
+    * e.g. SQuAD 2.0
+    * limitation:
+      * only span-based answers (no yes/no, counting, implicit why)
+      * ...
+  * Open-domain QA
+    * e.g. DrQA
+    * [[1704.00051] Reading Wikipedia to Answer Open-Domain Questions](https://arxiv.org/abs/1704.00051)
+
+#### Lecture 11: ConvNets for NLP
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture11-convnets.pdf)
+* [notes](CourseMaterials/notes/cs224n-2019-notes08-CNN.pdf)
+* readings
+  * [Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882)
+  * [A Convolutional Neural Network for Modelling Sentences](https://arxiv.org/abs/1404.2188)
+
 ### Assignments
 
 #### Assignment 1: Exploring Word Vectors
@@ -367,6 +393,14 @@ Other's Answer
     * Logistic Regression on unigrams and bigrams
     * Averaging word vectors
   * Lede-3 baseline
+
+## Book
+
+### O'Reilly Natural Language Processing with PyTorch
+
+> Recommend in Lecture 11
+
+* [joosthub/PyTorchNLPBook: Code and data accompanying Natural Language Processing with PyTorch published by O'Reilly Media](https://github.com/joosthub/PyTorchNLPBook) [#NLPROC – Natural Language Processing](https://nlproc.info/)
 
 ---
 
