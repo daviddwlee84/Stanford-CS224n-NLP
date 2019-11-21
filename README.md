@@ -417,7 +417,9 @@ Other's Answer
       * `vocab.json`: generated vocabulary, source 50004 words, target 50002 words
         * source: number of word types: 172418, number of word types w/ frequency >= 2: 80623
         * target: number of word types: 128873, number of word types w/ frequency >= 2: 64215
-    * Sanity Checks (1e, 1f, 1j, 2a, 2b, 2c, 2d) `python3 sanity_check.py [part]`
+    * Sanity Checks `python3 sanity_check.py [part]`
+      * pre-defined: (1e, 1f, 1j, 2a, 2b, 2c, 2d)
+      * customized: (1g, 1h)
 
 ### Projects
 
@@ -466,3 +468,8 @@ Other's Answer
   * [Observerspy/CS224n](https://github.com/caijie12138/CS224n-2019) (not fully 2019)
   * [caijie12138/CS224n-2019](https://github.com/caijie12138/CS224n-2019) (not quite the assignment)
   * [ZeyadZanaty/cs224n-assignments](https://github.com/ZeyadZanaty/cs224n-assignments) (just coding part assignment 2, 3)
+
+PyTorch notes
+
+* Element-wise Product: `A * B`, `torch.mul(A, B)`, `A.mul(B)`
+* Matrix Multiplication: `A @ B`, `torch.matmul(A, B)`, `torch.mm`, `torch.bmm`, ....
