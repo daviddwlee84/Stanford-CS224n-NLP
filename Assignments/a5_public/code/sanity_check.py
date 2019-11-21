@@ -9,6 +9,7 @@ Usage:
     sanity_check.py 1f
     sanity_check.py 1g
     sanity_check.py 1h
+    sanity_check.py 1i
     sanity_check.py 1j
     sanity_check.py 2a
     sanity_check.py 2b
@@ -131,7 +132,9 @@ def question_1h_test():
     print ("-"*80)
 
     print("Running test on a random tensor")
-    tensor_shape = [6, 4, 21, EMBED_SIZE] # (max sentence length, batch size, max word length, embedding dimension)
+    sentence_length = 6
+    max_word_length = 21
+    tensor_shape = [sentence_length, BATCH_SIZE, max_word_length, EMBED_SIZE] # (max sentence length, batch size, max word length, embedding dimension)
     gold_shape = torch.Size(tensor_shape)
 
     highway = Highway(EMBED_SIZE, dropout_rate=0)
@@ -141,6 +144,35 @@ def question_1h_test():
     assert output_tensor.shape == gold_shape, "Ouput tensor shape is incorrect: it should be:\n {} but is:\n{}".format(gold_shape, output_tensor.shape)
 
     print("Sanity Check Passed for Question 1h: Highway!")
+    print("-"*80)
+
+def question_1i_test():
+    """ Custom simple test for CNN module. 
+    (TODO: More detail sanity checks rather than just check the shape)
+    """
+    from cnn import CNN
+    print ("-"*80)
+    print("Running Sanity Check for Question 1i: CNN")
+    print ("-"*80)
+
+    print("Running test on a random tensor")
+    max_word_length = 21
+    kernel_size = 5
+
+    char_embed = EMBED_SIZE
+    word_embed = EMBED_SIZE + 1
+
+    tensor_shape = [BATCH_SIZE, char_embed, max_word_length] # (batch size, character embedding dimension, max word length)
+    output_shape = [BATCH_SIZE, word_embed]
+    gold_shape = torch.Size(output_shape)
+
+    cnn = CNN(char_embed, word_embed, max_word_length, kernel_size)
+    test_tensor = torch.randn(tensor_shape)
+    output_tensor = cnn(test_tensor)
+
+    assert output_tensor.shape == gold_shape, "Ouput tensor shape is incorrect: it should be:\n {} but is:\n{}".format(gold_shape, output_tensor.shape)
+
+    print("Sanity Check Passed for Question 1i: CNN!")
     print("-"*80)
 
 def question_1j_sanity_check(model):
@@ -264,6 +296,8 @@ def main():
         question_1g_test()
     elif args['1h']:
         question_1h_test()
+    elif args['1i']:
+        question_1i_test()
     elif args['1j']:
         question_1j_sanity_check(model)
     elif args['2a']:

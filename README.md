@@ -419,7 +419,12 @@ Other's Answer
         * target: number of word types: 128873, number of word types w/ frequency >= 2: 64215
     * Sanity Checks `python3 sanity_check.py [part]`
       * pre-defined: (1e, 1f, 1j, 2a, 2b, 2c, 2d)
-      * customized: (1g, 1h)
+      * customized: (1g, 1h, 1i)
+
+TODO:
+
+* [ ] Enrich the sanity check of the Highway
+* [ ] Enrich the sanity check of the CNN
 
 ### Projects
 
