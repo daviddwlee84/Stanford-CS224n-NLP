@@ -128,6 +128,7 @@ class VocabEntry(object):
         ###     You must prepend each word with the `start_of_word` character and append 
         ###     with the `end_of_word` character. 
 
+        return [[[self.start_of_word] + [self.char2id[char] for char in word] + [self.end_of_word] for word in sent] for sent in sents]
 
         ### END YOUR CODE
 

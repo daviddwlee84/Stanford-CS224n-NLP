@@ -417,6 +417,7 @@ Other's Answer
       * `vocab.json`: generated vocabulary, source 50004 words, target 50002 words
         * source: number of word types: 172418, number of word types w/ frequency >= 2: 80623
         * target: number of word types: 128873, number of word types w/ frequency >= 2: 64215
+    * Sanity Checks (1e, 1f, 1j, 2a, 2b, 2c, 2d) `python3 sanity_check.py [part]`
 
 ### Projects
 
