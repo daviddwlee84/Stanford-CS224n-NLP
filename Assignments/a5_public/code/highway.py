@@ -13,12 +13,11 @@ import torch.nn as nn
 class Highway(nn.Module):
     """ Highway Networks6 have a skip-connection controlled by a dynamic gate """
 
-    def __init__(self, embed_dim: int, dropout_rate: float):
+    def __init__(self, embed_dim: int): # word embedding dimension
         super(Highway, self).__init__()
         
         self.conv_out_proj = nn.Linear(embed_dim, embed_dim, bias=True)
         self.gate = nn.Linear(embed_dim, embed_dim, bias=True)
-        self.dropout = nn.Dropout(dropout_rate)
 
     def forward(self, x_conv_out):
         x_proj = torch.relu(self.conv_out_proj(x_conv_out))
@@ -26,9 +25,7 @@ class Highway(nn.Module):
 
         x_highway = x_gate * x_conv_out + (1 - x_gate) * x_conv_out
 
-        x_word_emb = self.dropout(x_highway)
-
-        return x_word_emb
+        return x_highway
 
 ### END YOUR CODE 
 

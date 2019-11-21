@@ -17,8 +17,8 @@ import torch.nn as nn
 #   `Highway` in the file `highway.py`
 # Uncomment the following two imports once you're ready to run part 1(j)
 
-# from cnn import CNN
-# from highway import Highway
+from cnn import CNN
+from highway import Highway
 
 # End "do not change" 
 
@@ -41,25 +41,65 @@ class ModelEmbeddings(nn.Module):
 
         ### YOUR CODE HERE for part 1j
 
+        self.char_embed_size = 50
+        self.word_embed_size = embed_size
+        self.max_word_len = 21
+        self.dropout_rate = 0.3
+        self.kernel_size = 5
+
+        self.char_embedding = nn.Embedding(
+            num_embeddings=len(vocab.char2id),
+            embedding_dim=self.char_embed_size,
+            padding_idx=vocab.char2id['<pad>']
+        )
+
+        self.cnn = CNN(
+            char_embed_dim=self.char_embed_size,
+            word_embed_dim=self.word_embed_size,
+            max_word_length=self.max_word_len,
+            kernel_size=self.kernel_size
+        )
+
+        self.highway = Highway(
+            embed_dim=self.word_embed_size
+        )
+
+        self.dropout = nn.Dropout(self.dropout_rate)
 
         ### END YOUR CODE
 
-    def forward(self, input):
+    def forward(self, x):
         """
         Looks up character-based CNN embeddings for the words in a batch of sentences.
-        @param input: Tensor of integers of shape (sentence_length, batch_size, max_word_length) where
+        @param x: Tensor of integers of shape (sentence_length, batch_size, max_word_length) where
             each integer is an index into the character vocabulary
 
         @param output: Tensor of shape (sentence_length, batch_size, embed_size), containing the 
             CNN-based embeddings for each word of the sentences in the batch
         """
         ## A4 code
-        # output = self.embeddings(input)
+        # output = self.embeddings(x)
         # return output
         ## End A4 code
 
         ### YOUR CODE HERE for part 1j
 
+        # (sentence_length, batch_size, max_word_length)
+        x_emb = self.char_embedding(x) # look up char embedding
+        sentence_length, batch_size, max_word_length, char_embed_size = x_emb.size()
+        # (sentence_length, batch_size, max_word_length, char_embed_size)
+        x_reshaped = x_emb.view(sentence_length*batch_size, max_word_length, char_embed_size).permute(0, 2, 1)
+        # (sentence_length * batch_size, char_embed_size, max_word_length)
+        x_conv = self.cnn(x_reshaped)
+        # (sentence_length * batch_size, word_embed_size)
+        x_highway = self.highway(x_conv)
+        # (sentence_length * batch_size, word_embed_size)
+        x_word_emb = self.dropout(x_highway)
+        # (sentence_length * batch_size, word_embed_size)
+        output = x_word_emb.view(sentence_length, batch_size, -1)
+        # (sentence_length, batch_size, word_embed_size)
+
+        return output
 
         ### END YOUR CODE
 
