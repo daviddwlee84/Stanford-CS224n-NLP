@@ -36,7 +36,7 @@ Lecture
 9. [X] Practical Tips for Final Projects - Default Final Project
 10. [X] Question Answering and the Default Final Project - Default Final Project
 11. [X] ConvNets for NLP
-12. [ ] Information from parts of words: Subword Models - Assignment 5
+12. [X] Information from parts of words: Subword Models - Assignment 5
 13. [X] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
 14. [X] Transformers and Self-Attention For Generative Models - Self-attention, Transformer
 15. [ ] Natural Language Generation - TODO
@@ -325,6 +325,8 @@ Lot of common technique (nowadays)
 * readings
   * [Achieving Open Vocabulary Neural Machine Translation with Hybrid Word-Character Models](https://arxiv.org/abs/1604.00788)
 
+> fastText
+
 ### Assignments
 
 #### Assignment 1: Exploring Word Vectors
@@ -403,6 +405,18 @@ Other's Answer
 
 * [handout](Assignments/a5_public/a5.pdf)
 * [directory](Assignments/a5_public)
+  * [written](Assignments/a5_public/written/assignment5.pdf)
+  * [code](Assignments/a5_public/code)
+    * Create the correct vocab files `sh run.sh vocab`
+      * `vocab_tiny_q1.json`: generated vocabulary, source 132 words, target 132 words
+        * source: number of word types: 128, number of word types w/ frequency >= 1: 128
+        * target: number of word types: 130, number of word types w/ frequency >= 1: 130
+      * `vocab_tiny_q2.json`: generated vocabulary, source 26 words, target 32 words
+        * source: number of word types: 128, number of word types w/ frequency >= 2: 22
+        * target: number of word types: 130, number of word types w/ frequency >= 2: 30
+      * `vocab.json`: generated vocabulary, source 50004 words, target 50002 words
+        * source: number of word types: 172418, number of word types w/ frequency >= 2: 80623
+        * target: number of word types: 128873, number of word types w/ frequency >= 2: 64215
 
 ### Projects
 
