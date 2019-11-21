@@ -420,12 +420,18 @@ Other's Answer
     * Sanity Checks `python3 sanity_check.py [part]`
       * pre-defined: (1e, 1f, 1j, 2a, 2b, 2c, 2d)
       * customized: (1g, 1h, 1i, 1j)
-    * Test the first part code on local
+    * Test the first part code at local
       * `sh run.sh train_local_q1` - this will run 100 epoches
         * `epoch 100, iter 500, cum. loss 0.31, cum. ppl 1.02 cum. examples 200`
         * `validation: iter 500, dev. ppl 1.003381`
-      * `sh run.sh test_local_q1` - the model should overfit => **Corpus BLEU: 99.29792465574434** (> 99)
+      * `sh run.sh test_local_q1` - the model should overfit => Corpus BLEU: 99.29792465574434 (> 99)
         * this will generate `outputs/test_outputs_local_q1.txt`
+    * Test the second part code at local
+      * `sh run.sh train_local_q2`
+        * `epoch 200, iter 1000, cum. loss 0.26, cum. ppl 1.01 cum. examples 200`
+        * `validation: iter 1000, dev. ppl 1.003469`
+      * `sh run.sh test_local_q2` - the model should overfit => Corpus BLEU: 99.29792465574434
+        * this will generate `outputs/test_outputs_local_q2.txt`
 
 TODO:
 
@@ -484,3 +490,7 @@ PyTorch notes
 
 * Element-wise Product: `A * B`, `torch.mul(A, B)`, `A.mul(B)`
 * Matrix Multiplication: `A @ B`, `torch.matmul(A, B)`, `torch.mm`, `torch.bmm`, ....
+* [RuntimeError: view size is not compatible with input tensor's size and stride (at least one dimension spans across two contiguous subspaces). Use .reshape(...) instead.](https://github.com/agrimgupta92/sgan/issues/22#issuecomment-452980941)
+  * `.view()` => error (only on CPU, because `tensor.cuda()` automatically makes the tensor contiguous)
+  * `.contiguous().view()` => okay
+  * `.reshape()` => okay
