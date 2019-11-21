@@ -420,6 +420,12 @@ Other's Answer
     * Sanity Checks `python3 sanity_check.py [part]`
       * pre-defined: (1e, 1f, 1j, 2a, 2b, 2c, 2d)
       * customized: (1g, 1h, 1i, 1j)
+    * Test the first part code on local
+      * `sh run.sh train_local_q1` - this will run 100 epoches
+        * `epoch 100, iter 500, cum. loss 0.31, cum. ppl 1.02 cum. examples 200`
+        * `validation: iter 500, dev. ppl 1.003381`
+      * `sh run.sh test_local_q1` - the model should overfit => **Corpus BLEU: 99.29792465574434** (> 99)
+        * this will generate `outputs/test_outputs_local_q1.txt`
 
 TODO:
 

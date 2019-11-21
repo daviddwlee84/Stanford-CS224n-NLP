@@ -6,9 +6,11 @@ Assignments/a2/code/utils/datasets/
 
 # Assignment 4 vocab
 Assignments/a4/code/vocab.json
+Assignments/a4/code/model.bin*
 
 # Assignment 5 vocab
 Assignments/a5_public/code/vocab*.json
+Assignments/a5_public/code/model.bin*
 
 ## Python
 

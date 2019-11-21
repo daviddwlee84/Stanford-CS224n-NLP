@@ -41,8 +41,10 @@ class ModelEmbeddings(nn.Module):
 
         ### YOUR CODE HERE for part 1j
 
+        # word_embed_size, this is necessary to save the model in `nmt_model.py`
+        self.embed_size = embed_size
+
         self.char_embed_size = 50
-        self.word_embed_size = embed_size
         self.max_word_len = 21
         self.dropout_rate = 0.3
         self.kernel_size = 5
@@ -55,13 +57,13 @@ class ModelEmbeddings(nn.Module):
 
         self.cnn = CNN(
             char_embed_dim=self.char_embed_size,
-            word_embed_dim=self.word_embed_size,
+            word_embed_dim=self.embed_size,
             max_word_length=self.max_word_len,
             kernel_size=self.kernel_size
         )
 
         self.highway = Highway(
-            embed_dim=self.word_embed_size
+            embed_dim=self.embed_size
         )
 
         self.dropout = nn.Dropout(self.dropout_rate)
