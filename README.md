@@ -11,17 +11,17 @@ Course Related Links
 
 ## Schedule
 
-| Week             | Lectures                                                                                                                                                                                                                                                                            | Assignments                                                              |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses)                                                                                                                              | [Assignment 1](#Assignment-1-Exploring-Word-Vectors)                     |
-| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)                                                                                                                                       | -                                                                        |
-| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                                                                                                                                                         | [Assignment 2](#Assignment-2-word2vec)                                   |
-| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                                                                                                                      | -                                                                        |
-| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                                                                                                             | [Assignment 3](#Assignment-3-Dependency-Parsing)                         |
-| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention)                                                                                             | [Assignment 4](#assignment-4-neural-machine-translation)                 |
-| 2019/11/11~11/17 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models), [Modeling contexts of use: Contextual Representations and Pretraining](#lecture-13-modeling-contexts-of-use-contextual-representations-and-pretraining) | -                                                                        |
-| 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects), [Question Answering](#lecture-10-question-answering-and-the-default-final-project), [ConvNets for NLP](#lecture-11-convnets-for-nlp)                                                                   | -                                                                        |
-| 2019/11/25~12/1  | [Subword Models](#lecture-12-information-from-parts-of-words-subword-models)                                                                                                                                                                                                        | [Assignment 5](#assignment-5-character-based-neural-machine-translation) |
+| Week             | Lectures                                                                                                                                                                                                                                                                                        | Assignments                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 2019/7/1~7/7     | [Introduction and Word Vectors](#Lecture-1-Introduction-and-Word-Vectors), [Word Vectors 2 and Word Senses](#Lecture-2-Word-Vectors-2-and-Word-Senses)                                                                                                                                          | [Assignment 1](#Assignment-1-Exploring-Word-Vectors)                     |
+| 2019/7/8~7/14    | [Word Window Classification, Neural Networks, and Matrix Calculus](#Lecture-3-Word-Window-Classification-Neural-Networks-and-Matrix-Calculus)                                                                                                                                                   | -                                                                        |
+| 2019/7/15~7/21   | [Backpropagation and Computation Graphs](#Lecture-4-Backpropagation-and-Computation-Graphs)                                                                                                                                                                                                     | [Assignment 2](#Assignment-2-word2vec)                                   |
+| 2019/10/21~10/27 | [Linguistic Structure: Dependency Parsing](#lecture-5-linguistic-structure-dependency-parsing)                                                                                                                                                                                                  | -                                                                        |
+| 2019/10/28~11/3  | [Recurrent Neural Networks and Language Models](#lecture-6-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models)                                                                                                                                                         | [Assignment 3](#Assignment-3-Dependency-Parsing)                         |
+| 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention)                                                                                                         | [Assignment 4](#assignment-4-neural-machine-translation)                 |
+| 2019/11/11~11/17 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models), [Modeling contexts of use: Contextual Representations and Pretraining](#lecture-13-modeling-contexts-of-use-contextual-representations-and-pretraining)             | -                                                                        |
+| 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects), [Question Answering](#lecture-10-question-answering-and-the-default-final-project), [ConvNets for NLP](#lecture-11-convnets-for-nlp), [Subword Models](#lecture-12-information-from-parts-of-words-subword-models) | [Assignment 5](#assignment-5-character-based-neural-machine-translation) |
+| 2019/11/25~12/1  | [[Project: Question Answering]](#question-answering-on-squad)                                                                                                                                                                                                                                   | -                                                                        |
 
 Lecture
 
@@ -59,8 +59,8 @@ Assignment
    1. [X] code
    2. [X] written
 5. [ ] Character-based Neural Machine Translation
-   1. [ ] code
-   2. [ ] written
+   1. [X] code
+   2. [ ] written - TODO
 
 Project
 
@@ -432,11 +432,16 @@ Other's Answer
         * `validation: iter 1000, dev. ppl 1.003469`
       * `sh run.sh test_local_q2` - the model should overfit => Corpus BLEU: 99.29792465574434
         * this will generate `outputs/test_outputs_local_q2.txt`
+    * Train the model with `sh run.sh train` and test the performance with `sh run.sh test`
+      * `epoch 29, iter 196330, avg. loss 90.37, avg. ppl 147.15 cum. examples 10537, speed 3512.25 words/sec, time elapsed 29845.45 sec`
+      * `reached maximum number of epochs!` => **Corpus BLEU: 24.20035238301319**
 
 TODO:
 
 * [ ] Enrich the sanity check of the Highway
 * [ ] Enrich the sanity check of the CNN
+* [ ] Compare the output with Assignment 4 (especially the `<unk>` words)
+* [ ] Written part
 
 ### Projects
 
