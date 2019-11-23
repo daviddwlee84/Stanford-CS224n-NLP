@@ -39,7 +39,7 @@ class VocabEntry(object):
         else:
             self.word2id = dict()
             self.word2id['<pad>'] = 0   # Pad Token
-            self.word2id['<s>'] = 1 # Start Token
+            self.word2id['<s>'] = 1     # Start Token
             self.word2id['</s>'] = 2    # End Token
             self.word2id['<unk>'] = 3   # Unknown Token
         self.unk_id = self.word2id['<unk>']

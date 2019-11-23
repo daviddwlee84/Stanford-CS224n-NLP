@@ -122,7 +122,6 @@ class NMT(nn.Module):
         scores = target_gold_words_log_prob.sum() # mhahn2 Small modification from A4 code.
 
 
-
         if self.charDecoder is not None:
             max_word_len = target_padded_chars.shape[-1]
 
@@ -381,7 +380,7 @@ class NMT(nn.Module):
                 decodedWords = self.charDecoder.decode_greedy((decoderStatesForUNKsHere.unsqueeze(0), decoderStatesForUNKsHere.unsqueeze(0)), max_length=21, device=self.device)
                 assert len(decodedWords) == decoderStatesForUNKsHere.size()[0], "Incorrect number of decoded words"
                 for hyp in new_hypotheses:
-                  if hyp[-1].startswith("<unk>"):
+                    if hyp[-1].startswith("<unk>"):
                         hyp[-1] = decodedWords[int(hyp[-1][5:])]#[:-1]
 
             if len(completed_hypotheses) == beam_size:
