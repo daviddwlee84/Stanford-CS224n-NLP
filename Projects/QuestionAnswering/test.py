@@ -43,8 +43,11 @@ def main(args):
 
     # Get model
     log.info('Building model...')
-    model = BiDAF(word_vectors=word_vectors,
-                  hidden_size=args.hidden_size)
+    if args.model == 'BiDAF-baseline':
+        model = BiDAF(word_vectors=word_vectors,
+                      hidden_size=args.hidden_size)
+    elif args.model == 'BiDAF-w-char':
+        pass # TODO
     model = nn.DataParallel(model, gpu_ids)
     log.info(f'Loading checkpoint from {args.load_path}...')
     model = util.load_model(model, args.load_path, gpu_ids, return_step=False)
