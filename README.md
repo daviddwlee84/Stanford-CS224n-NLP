@@ -6,8 +6,9 @@ The course notes about Stanford CS224n Winter 2019 (using PyTorch)
 
 Course Related Links
 
-* [CS224n: Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)
+* Course Main Page: [CS224n Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)
 * [Lecture Videos](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
+* [Stanford Online Hub - CS224n](http://onlinehub.stanford.edu/cs224)
 
 ## Schedule
 
@@ -21,7 +22,8 @@ Course Related Links
 | 2019/11/4~11/10  | [Vanishing Gradients and Fancy RNNs](#lecture-7-vanishing-gradients-and-fancy-rnns), [Machine Translation, Seq2Seq and Attention](#lecture-8-machine-translation-seq2seq-and-attention)                                                                                                         | [Assignment 4](#assignment-4-neural-machine-translation)                 |
 | 2019/11/11~11/17 | [Transformers and Self-Attention For Generative Models](#lecture-14-transformers-and-self-attention-for-generative-models), [Modeling contexts of use: Contextual Representations and Pretraining](#lecture-13-modeling-contexts-of-use-contextual-representations-and-pretraining)             | -                                                                        |
 | 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects), [Question Answering](#lecture-10-question-answering-and-the-default-final-project), [ConvNets for NLP](#lecture-11-convnets-for-nlp), [Subword Models](#lecture-12-information-from-parts-of-words-subword-models) | [Assignment 5](#assignment-5-character-based-neural-machine-translation) |
-| 2019/11/25~12/1  | [[Project: Question Answering]](#question-answering-on-squad)                                                                                                                                                                                                                                   | -                                                                        |
+| 2019/11/25~12/1  | [[Project: Question Answering]](#question-answering-on-squad), [Natural Language Generation](#lecture-15-natural-language-generation)                                                                                                                                                           | -                                                                        |
+| 2019/12/2~12/8   | [[Project: Question Answering]](#question-answering-on-squad)                                                                                                                                                                                                                                   | -                                                                        |
 
 Lecture
 
@@ -39,7 +41,7 @@ Lecture
 12. [X] Information from parts of words: Subword Models - Assignment 5
 13. [X] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
 14. [X] Transformers and Self-Attention For Generative Models - Self-attention, Transformer
-15. [ ] Natural Language Generation - TODO
+15. [X] Natural Language Generation - TODO
 16. [ ] Reference in Language and Coreference Resolution
 17. [ ] Multitask Learning: A general model for NLP? - TODO
 18. [ ] Constituency Parsing and Tree Recursive Neural Networks - TODO
@@ -69,12 +71,15 @@ Project
 
 Paper reading
 
-* [ ] word2vec
+* [X] word2vec
 * [ ] negative sampling
 * [ ] GloVe
 * [ ] improveing distrubutional similarity
 * [ ] embedding evaluation methods
-* [ ] Transformer
+* [X] Transformer
+* [X] ELMo
+* [X] BERT
+* [ ] fastText
 
 Derivation
 
@@ -124,6 +129,8 @@ Outline
 * Evaluation on word vectors
   * Intrinsic
   * Extrinsic
+
+> [CS 168 The Modern Algorithmic Toolbox](https://web.stanford.edu/class/cs168/index.html) - for SVD
 
 #### Lecture 3: Word Window Classification, Neural Networks, and Matrix Calculus
 
@@ -182,6 +189,28 @@ Outline
   * [ ] [Universal Stanford Dependencies: A cross-linguistic typology](CourseMaterials/readings/Universal_Dependencies_A_cross-linguistic_typology.pdf)
   * [X] [**Universal Dependencies website**](https://universaldependencies.org/)
 
+Outline
+
+* Methods of Dependency Parsing
+  * Dynamic Programming
+    * complexity O(n³)
+  * Graph Algorithm
+    * create a minimum spanning tree for a sentence
+  * Constraint Satisfaction
+    * edges are eliminated that don't satisfy hard constraints
+  * **Transition-based Parsing / Deterministic Dependency Parsing**
+    * greedy choice of attachments guided by machine learning classifier
+    * complexity O(n)
+* Operations of the **Shift-reduce Parser**
+  * Shift
+  * Left-Arc
+  * Right-Arc
+* Attachment Errors
+  * Prepositional Phrase Attachment Errors
+  * Verb Phrase Attachment Errors
+  * Modifier Attachment Errors
+  * Coordination Attachment Errors
+
 > mentioned CS103, CS228
 
 #### Lecture 6: The probability of a sentence? Recurrent Neural Networks and Language Models
@@ -197,6 +226,14 @@ Outline
 > * N-gram Language Model
 > * Fixed-window Neural Language Model
 > * vanilla RNN
+
+* Language Modeling: the task of *predicting the next word*, given the words so far
+* Language Model: a system that produces the probability distribution for the next candidate word
+* *Conditional* Language Modeling: the task of predicting the next word, given the words so far, *and also some other input x*
+  * Machine Translation (x=source sentence, y=target sentence)
+  * Summarization (x=input text, y=summarized text)
+  * Dialogue (x=dialogue history, y=next utterance)
+  * ...
 
 #### Lecture 7: Vanishing Gradients and Fancy RNNs
 
@@ -226,6 +263,18 @@ Outline
   * [ ] [Neural Machine Translation by Jointly Learning to Align and Translate](CourseMaterials/readings/Neural_Machine_Translation_by_Jointly_Learning_to_Align_and_Translate.pdf) (original seq2seq+attention paper)
   * [ ] [**Attention and Augmented Recurrent Neural Networks**](https://distill.pub/2016/augmented-rnns/) (blog post overview)
   * [ ] [Massive Exploration of Neural Machine Translation Architectures](CourseMaterials/readings/Massive_Exploration_of_Neural_Machine_Translation_Architectures.pdf) (practical advice for hyperparameter choices)
+
+> * Training method: Teacher Forcing
+>   * During training, we feed the gold (aka reference) target sentence into the decoder, regardless of what the decoder predicts.
+> * During testing (decoding): Beam Search vs. Greedy Decoding
+>   * Decoding Algorithm: an algorithm you use to generate text from your language model
+>     * Greedy Decoding => lack of backtracking
+>       * on each step take the most probable word (i.e. argmax)
+>       * use that as the next word, and feed it as input on the next step
+>       * keep going until you produce `<END>` or reach some max length
+>     * Beam Search: aims to find high-probability sequence by tracking multiple possible sequences at once
+>       * on each step of decoder, keep track of the k (beam size) most probable partial sequences (hypotheses)
+>       * after you reach some stopping criterion (get n complete hypotheses (each stop when reach max depth, produce `<END>`)), choose the sequence with the highest probability (with score normalization)
 
 #### Lecture 13: Modeling contexts of use: Contextual Representations and Pretraining
 
@@ -327,12 +376,56 @@ Lot of common technique (nowadays)
 
 > fastText
 
+#### Lecture 15: Natural Language Generation
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture15-nlg.pdf)
+
+Outline
+
+* Decoding mehtods
+  * Greedy decoding
+  * Beam search
+  * Sampling-based decoding: good for open-ended/creative generation (poetry, stories)
+    * Pure sampling: like greedy decoding, but sample instead of argmax
+    * Top-n sampling: like pure sampling, but truncate the probability distribution
+
+> Softmax temperature: another way to control diversity
+
+* NLG Tasks
+  * Machine Translation
+  * (Abstractive) Summarization
+    * Evaluation: ROUGE
+  * Dialogue
+    * chit-chat
+    * task-based
+  * Creative writing
+    * Storytelling
+    * Poetry-generation
+  * Freefrom Question Answering
+  * Image captioning
+  * ...
+* NLG Evaluation Metrics
+  * Word overlap based metrics
+    * BLEU
+    * ROUGE
+    * METEOR
+    * F1
+    * ...
+  * (Perplexity) doesn't tell you anything about generation
+  * Word embedding based metrics
+  * Human evaluation
+
 ### Assignments
 
 #### Assignment 1: Exploring Word Vectors
 
 * [code](Assignments/a1/exploring_word_vectors.ipynb)
 * [directory](Assignments/a1)
+
+Outline
+
+* co-occurrance matrix + Truncated SVD
+* pre-trained word2vec
 
 #### Assignment 2: word2vec
 
@@ -343,6 +436,10 @@ Lot of common technique (nowadays)
     * `python3 word2vec.py` check the correctness of word2vec
     * `python3 sgd.py` check the correctness of SGD
     * `./get_datasets.sh; python3 run.py` - training took 9480 seconds
+
+Outline
+
+* Train word2vec with skip-gram model and negative sampling using stochastic gradient descent
 
 Related
 
@@ -368,6 +465,12 @@ Others' Answer
       * set `debug=False` to train on the entire dataset ([`train_out.log`](Assignments/a3/train_out.log))
         * best UAS on the dev set: 88.79 (epoch 9/10)
         * best UAS on the test set: 89.27
+
+Outline
+
+* Adam Optimizer
+* Dropout
+* Neural Transition-based Dependency Parser (a shift-reduce parser)
 
 Others' Answer
 
@@ -452,6 +555,8 @@ TODO:
 
 #### Question Answering on SQuAD
 
+SQuAD is NOT an Natural Language Generation task. (since the answer is extracted from text.)
+
 > Default final project
 >
 > * [handout](Projects/QuestionAnswering/default-final-project-handout.pdf)
@@ -483,6 +588,8 @@ TODO:
 ---
 
 * [Course contents backup](https://github.com/zhanlaoban/CS224N-Stanford-Winter-2019)
+* [Software - The Stanford Natural Language Processing Group](https://nlp.stanford.edu/software/)
+  * [Stanford NLP Chinese Usage](https://github.com/liu-nlper/Stanford-NLP-Usage)
 * Others' answer
   * [Luvata/CS224N-2019](https://github.com/Luvata/CS224N-2019) (almost finish all the written part as well)
   * [ZacBi/CS224n-2019-solutions](https://github.com/ZacBi/CS224n-2019-solutions) (didn't finish the written part)
