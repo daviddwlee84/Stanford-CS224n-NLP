@@ -12,6 +12,10 @@ Assignments/a4/code/model.bin*
 Assignments/a5_public/code/vocab*.json
 Assignments/a5_public/code/model.bin*
 
+# Project QA
+Projects/QuestionAnswering/data/
+Projects/QuestionAnswering/save/
+
 ## Python
 
 # Byte-compiled / optimized / DLL files
