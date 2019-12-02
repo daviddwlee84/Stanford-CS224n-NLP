@@ -210,9 +210,10 @@ def add_train_test_args(parser):
                         required=True,
                         help='Name to identify training or test run.')
     parser.add_argument('--model',
+                        '-m',
                         type=str,
-                        default='BiDAF-baseline',
-                        choices=('BiDAF-baseline'), # TODO: BiDAF-w-char
+                        default='BiDAF-w-char',
+                        choices=('BiDAF-baseline', 'BiDAF-w-char'),
                         help='Model to train.')
     parser.add_argument('--max_ans_len',
                         type=int,
@@ -247,3 +248,7 @@ def add_train_test_args(parser):
                         type=str,
                         default=None,
                         help='Path to load as a model checkpoint.')
+    parser.add_argument('--debug', # Use this when debugging or ipdb can't work
+                        action='store_true',
+                        default=False,
+                        help='Disable data parallel to debug.')

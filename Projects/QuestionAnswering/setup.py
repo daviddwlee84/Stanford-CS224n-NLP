@@ -26,6 +26,7 @@ from zipfile import ZipFile
 
 
 def download_url(url, output_path, show_progress=True):
+    """ Download anything from an URL """
     class DownloadProgressBar(tqdm):
         def update_to(self, b=1, bsize=1, tsize=None):
             if tsize is not None:
@@ -45,10 +46,12 @@ def download_url(url, output_path, show_progress=True):
 
 
 def url_to_data_path(url):
+    """ Get the file output path in the ./data folder """
     return os.path.join('./data/', url.split('/')[-1])
 
 
 def download(args):
+    """ Download anything and unzip if it is ended with *.zip """
     downloads = [
         # Can add other downloads here (e.g., other word vectors)
         ('GloVe word vectors', args.glove_url),
@@ -71,7 +74,8 @@ def download(args):
     run(['python', '-m', 'spacy', 'download', 'en'])
 
 def word_tokenize(sent):
-    doc = nlp(sent)
+    """ Get word token of a sentence """
+    doc = nlp(sent) # spacy language model
     return [token.text for token in doc]
 
 
@@ -89,6 +93,7 @@ def convert_idx(text, tokens):
 
 
 def process_file(filename, data_type, word_counter, char_counter):
+    """ Process each dataset (train, dev, test) """
     print(f"Pre-processing {data_type} examples...")
     examples = []
     eval_examples = {}
@@ -181,7 +186,7 @@ def get_embedding(counter, data_type, limit=-1, emb_file=None, vec_size=None, nu
     return emb_mat, token2idx_dict
 
 
-def convert_to_features(args, data, word2idx_dict, char2idx_dict, is_test):
+def convert_to_features(args, data, word2idx_dict, char2idx_dict, is_test): # unused
     example = {}
     context, question = data
     context = context.replace("''", '" ').replace("``", '" ')
@@ -211,12 +216,12 @@ def convert_to_features(args, data, word2idx_dict, char2idx_dict, is_test):
         for each in (word, word.lower(), word.capitalize(), word.upper()):
             if each in word2idx_dict:
                 return word2idx_dict[each]
-        return 1
+        return 1 # UNK
 
     def _get_char(char):
         if char in char2idx_dict:
             return char2idx_dict[char]
-        return 1
+        return 1 # UNK
 
     for i, token in enumerate(example["context_tokens"]):
         context_idxs[i] = _get_word(token)
@@ -240,10 +245,12 @@ def convert_to_features(args, data, word2idx_dict, char2idx_dict, is_test):
 
 
 def is_answerable(example):
+    """ Check if a paragraph-question pair has an answer (no answer happened in SQuAD 2.0) """
     return len(example['y2s']) > 0 and len(example['y1s']) > 0
 
 
 def build_features(args, examples, data_type, out_file, word2idx_dict, char2idx_dict, is_test=False):
+    """ Convert examples to numpy indices and then save as *.npz """
     para_limit = args.test_para_limit if is_test else args.para_limit
     ques_limit = args.test_ques_limit if is_test else args.ques_limit
     ans_limit = args.ans_limit
@@ -340,6 +347,7 @@ def build_features(args, examples, data_type, out_file, word2idx_dict, char2idx_
 
 
 def save(filename, obj, message=None):
+    """ Save (dump) an object as a JSON file """
     if message is not None:
         print(f"Saving {message}...")
         with open(filename, "w") as fh:
@@ -347,8 +355,9 @@ def save(filename, obj, message=None):
 
 
 def pre_process(args):
+    """ The main data pre-processing script """
     # Process training set and use it to decide on the word/character vocabularies
-    word_counter, char_counter = Counter(), Counter()
+    word_counter, char_counter = Counter(), Counter() # TODO: figure out why using Counter
     train_examples, train_eval = process_file(args.train_file, "train", word_counter, char_counter)
     word_emb_mat, word2idx_dict = get_embedding(
         word_counter, 'word', emb_file=args.glove_file, vec_size=args.glove_dim, num_vectors=args.glove_num_vecs)
