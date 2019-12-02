@@ -42,7 +42,13 @@
 1. [X] BiDAF without character-level embedding layer (default baseline)
    * Last Train (30 epoches): `Dev NLL: 03.28, F1: 59.77, EM: 56.41, AvNA: 66.93`
    * Test: `Dev NLL: 03.22, F1: 59.96, EM: 56.70, AvNA: 66.95`
+   * Common Command
+     * Train: `python train.py -n baseline -m BiDAF-baseline`
 2. [ ] BiDAF-No-Answer (single model)
+   * Common Command
+     * Train: `python train.py -n BiDAF-No-Answer -m BiDAF-w-char`
+   * Remarks
+     * I used Assignment 5 char model embedding module and share half `hidden_size` with original word embedding then concatenate them together as the new word representation
 3. [ ] ...(more improvement)
 
 ## Files
