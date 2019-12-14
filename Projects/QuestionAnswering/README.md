@@ -40,11 +40,11 @@
 ## Progress
 
 1. [X] BiDAF without character-level embedding layer (default baseline)
-   * Last Train (30 epoches): `Dev NLL: 03.28, F1: 59.77, EM: 56.41, AvNA: 66.93`
-   * Test: `Dev NLL: 03.22, F1: 59.96, EM: 56.70, AvNA: 66.95`
+   * Test on the best checkpoint: `Dev NLL: 03.22, F1: 59.96, EM: 56.70, AvNA: 66.95`
    * Common Command
      * Train: `python train.py -n baseline -m BiDAF-baseline`
 2. [ ] BiDAF-No-Answer (single model)
+   * Test on the best checkpoint: `Dev NLL: 02.89, F1: 63.36, EM: 59.84, AvNA: 70.04`
    * Common Command
      * Train: `python train.py -n BiDAF-No-Answer -m BiDAF-w-char`
    * Remarks

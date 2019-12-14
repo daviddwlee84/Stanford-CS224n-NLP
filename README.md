@@ -24,6 +24,7 @@ Course Related Links
 | 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects), [Question Answering](#lecture-10-question-answering-and-the-default-final-project), [ConvNets for NLP](#lecture-11-convnets-for-nlp), [Subword Models](#lecture-12-information-from-parts-of-words-subword-models) | [Assignment 5](#assignment-5-character-based-neural-machine-translation) |
 | 2019/11/25~12/1  | [[Project: Question Answering]](#question-answering-on-squad), [Natural Language Generation](#lecture-15-natural-language-generation)                                                                                                                                                           | -                                                                        |
 | 2019/12/2~12/8   | [[Project: Question Answering]](#question-answering-on-squad)                                                                                                                                                                                                                                   | -                                                                        |
+| 2019/12/9~12/15  | [Reference in Language and Coreference Resolution](#lecture-16-reference-in-language-and-coreference-resolution), [Multitask Learning: A general model for NLP?](#lecture-17-multitask-learning-a-general-model-for-nlp)                                                                        | -                                                                        |
 
 Lecture
 
@@ -41,7 +42,7 @@ Lecture
 12. [X] Information from parts of words: Subword Models - Assignment 5
 13. [X] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
 14. [X] Transformers and Self-Attention For Generative Models - Self-attention, Transformer
-15. [X] Natural Language Generation - TODO
+15. [X] Natural Language Generation
 16. [ ] Reference in Language and Coreference Resolution
 17. [ ] Multitask Learning: A general model for NLP? - TODO
 18. [ ] Constituency Parsing and Tree Recursive Neural Networks - TODO
@@ -414,6 +415,14 @@ Outline
   * (Perplexity) doesn't tell you anything about generation
   * Word embedding based metrics
   * Human evaluation
+
+#### Lecture 16: Reference in Language and Coreference Resolution
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture16-coref.pdf)
+
+#### Lecture 17: Multitask Learning: A general model for NLP
+
+* [slides](CourseMaterials/slides/cs224n-2019-lecture17-multitask.pdf)
 
 ### Assignments
 
