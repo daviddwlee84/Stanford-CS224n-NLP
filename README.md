@@ -43,7 +43,7 @@ Lecture
 13. [X] Modeling contexts of use: Contextual Representations and Pretraining - ELMo, BERT
 14. [X] Transformers and Self-Attention For Generative Models - Self-attention, Transformer
 15. [X] Natural Language Generation
-16. [ ] Reference in Language and Coreference Resolution
+16. [X] Reference in Language and Coreference Resolution
 17. [ ] Multitask Learning: A general model for NLP? - TODO
 18. [ ] Constituency Parsing and Tree Recursive Neural Networks - TODO
 19. [ ] Safety, Bias, and Fairness
@@ -419,6 +419,44 @@ Outline
 #### Lecture 16: Reference in Language and Coreference Resolution
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture16-coref.pdf)
+
+* Coreference Resolution: identify all *mentions* that refer to the same real world entity
+  * Application
+    * Full text understanding
+    * Machine translation
+    * Dialogue systems
+  * Step (Pipelined system)
+    1. Detect the *mentions* => using other NLP system
+    2. Cluster the *mentions*
+  * End-to-end system
+  * Model
+    * Rule-based (pronomial anaphora resolution)
+      * can't solve sentences which have *identical syntactic structure*
+    * Mention Pair
+      * binary classifier: coreferent or not (for every pair of mentions)
+      * custering
+        1. pick a threshold and add coreference links when above
+        2. take the transitive closure to get the clustering
+    * Mention Ranking
+      1. assign each mention its highest scoring candidate antecedent
+      2. add dummy NA mention at the front (for decline linking)
+    * Clustering
+      * Agglomerative clustering
+        1. start with each mention in its own singleton cluster
+        2. merge a pair of clusters at each step
+* *Mention*: span of text referring to some entity
+  1. pronouns
+     * capture use a part-of-speech tagger
+  2. named entities
+     * capture use a NER system
+  3. noun phrases
+     * capture use a parser (especially a constituency parser)
+* Linguistics stuff
+  * Coreference: two mentions refer to the same entity in the world
+  * Anaphora: when a term (anaphor) refers to another term (antecedent)
+    * Pronominal Anaphora (Coreferential one)
+    * Bridging Anaphora (Not Coreferential)
+  * Cataphora: when antecedent comes after (usually before) the anaphor
 
 #### Lecture 17: Multitask Learning: A general model for NLP
 
