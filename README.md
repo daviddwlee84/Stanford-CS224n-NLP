@@ -6,7 +6,7 @@ The course notes about Stanford CS224n Winter 2019 (using PyTorch)
 
 Course Related Links
 
-* Course Main Page: [CS224n Natural Language Processing with Deep Learning](http://web.stanford.edu/class/cs224n/)
+* Course Main Page: [Winter 2019](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/) ([latest](http://web.stanford.edu/class/cs224n/))
 * [Lecture Videos](https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z)
 * [Stanford Online Hub - CS224n](http://onlinehub.stanford.edu/cs224)
 
@@ -24,7 +24,8 @@ Course Related Links
 | 2019/11/18~11/24 | [Practical Tips for Projects](#lecture-9-practical-tips-for-final-projects), [Question Answering](#lecture-10-question-answering-and-the-default-final-project), [ConvNets for NLP](#lecture-11-convnets-for-nlp), [Subword Models](#lecture-12-information-from-parts-of-words-subword-models) | [Assignment 5](#assignment-5-character-based-neural-machine-translation) |
 | 2019/11/25~12/1  | [[Project: Question Answering]](#question-answering-on-squad), [Natural Language Generation](#lecture-15-natural-language-generation)                                                                                                                                                           | -                                                                        |
 | 2019/12/2~12/8   | [[Project: Question Answering]](#question-answering-on-squad)                                                                                                                                                                                                                                   | -                                                                        |
-| 2019/12/9~12/15  | [Reference in Language and Coreference Resolution](#lecture-16-reference-in-language-and-coreference-resolution), [Multitask Learning: A general model for NLP?](#lecture-17-multitask-learning-a-general-model-for-nlp)                                                                        | -                                                                        |
+| 2019/12/9~12/15  | [Reference in Language and Coreference Resolution](#lecture-16-reference-in-language-and-coreference-resolution)                                                                                                                                                                                | -                                                                        |
+| 2020/1/13~1/19   | [Multitask Learning: A general model for NLP?](#lecture-17-multitask-learning-a-general-model-for-nlp)                                                                                                                                                                                          | -                                                                        |
 
 Lecture
 
@@ -44,7 +45,7 @@ Lecture
 14. [X] Transformers and Self-Attention For Generative Models - Self-attention, Transformer
 15. [X] Natural Language Generation
 16. [X] Reference in Language and Coreference Resolution
-17. [ ] Multitask Learning: A general model for NLP? - TODO
+17. [X] Multitask Learning: A general model for NLP?
 18. [ ] Constituency Parsing and Tree Recursive Neural Networks - TODO
 19. [ ] Safety, Bias, and Fairness
 20. [ ] Future of NLP + Deep Learning
@@ -420,6 +421,8 @@ Outline
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture16-coref.pdf)
 
+Outline
+
 * Coreference Resolution: identify all *mentions* that refer to the same real world entity
   * Application
     * Full text understanding
@@ -461,6 +464,35 @@ Outline
 #### Lecture 17: Multitask Learning: A general model for NLP
 
 * [slides](CourseMaterials/slides/cs224n-2019-lecture17-multitask.pdf)
+
+Outline
+
+* Natural Language Decathlon ([decaNLP](https://decanlp.com/))
+  * => reduce subtask to more general task => transfer knowledge from the other task => maybe then we can do Zero-shot Learning / Transfer Learning
+  * [salesforce/decaNLP: The Natural Language Decathlon: A Multitask Challenge for NLP](https://github.com/salesforce/decaNLP)
+* 3 equivalent supertasks of NLP
+  * **Language Modeling**
+    * predict next word
+    * embedding...
+  * **Question Answering** Formalism (Multitask Learning as QA) => Training single question answering model for multiple NLP tasks (aka. questions)
+    * Question Answering
+    * Machine Translation
+    * Summarization
+    * Natural Language Inference
+    * Sentiment Classification
+    * Semantic Role Labeling
+    * Relation Extraction
+    * Dialogue
+    * Semantic Parsing
+    * Commonsense Reasoning
+  * **Dialogue**
+* Framework for tackling
+  * more general language understanding
+  * multitask learning
+  * domain adaptation
+  * transfer learning
+  * weight sharing, pre-training, fine-tuning (towards ImageNet-CNN of NLP)
+  * zero-shot learning
 
 ### Assignments
 
